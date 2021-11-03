@@ -1,0 +1,6 @@
+framework module Pods_Car_Pool_Car_PoolUITests {
+  umbrella header "Pods-Car Pool-Car PoolUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
