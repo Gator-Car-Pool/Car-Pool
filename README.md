@@ -117,6 +117,7 @@ Just a prototype :)
             }
          }
          ```
+         
       - (Delete) Delete existing ride
       - (Create/POST) Create a new request
       - (Delete) Reject existing request
