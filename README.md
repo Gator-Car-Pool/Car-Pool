@@ -69,3 +69,62 @@ Allows University of Florida students to carpool with each other. After chatting
 ## Wireframes
 Just a prototype :)
 ![](https://i.imgur.com/YGxPBew.jpg)
+
+
+## Schema 
+### Models
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | UserID      | String   | unique id for the user post (default field) |
+   | profilePic        | File| image author |
+   | profile Name         | String     | user name |
+   | Phone       | String   | user phone number |
+   | likesCount    | Number   | number of likes for user rides |
+   | Car  Location   | String |  car location via gps|
+   |  Model     | String | date when post is last updated (default field) |
+   | Make     | String | date when post is last updated (default field) |
+
+
+### Networking
+#### List of network requests by screen
+   - Sending request
+      - (Read/GET) Query all posts where user is author
+         ```swift
+         let query = PFQuery(className:"Request")
+         query.whereKey("userid", equalTo: currentUser)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let requests = requests {
+               print("Successfully retrieved \(approval) request.")
+           // TODO: Do something with requst...
+            }
+         }
+         ```
+      - (Create/POST) Create a new ride
+             ```swift
+         let car = PFQuery(className:"location")
+         query.whereKey("car", equalTo: currentUserL:ocation)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let locations = locations {
+               print("Successfully arrived \(approval).")
+            }
+         }
+         ```
+      - (Delete) Delete existing ride
+      - (Create/POST) Create a new request
+      - (Delete) Reject existing request
+   - Create Ride Stop Screen
+      - (Create/POST) Create a new rating
+   - Profile Screen
+      - (Read/GET) Query logged in user object
+      - (Update/PUT) Update user profile image
+      -  (Read/GET) Query if user on app.
+      - (Update/PUT) Update user activity.
+
