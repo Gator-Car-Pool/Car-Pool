@@ -119,13 +119,89 @@ Just a prototype :)
          ```
          
       - (Delete) Delete existing ride
+
+         
       - (Create/POST) Create a new request
+
+         ```swift
+         let car = PFQuery(className:"requesting")
+         query.whereKey("requests", equalTo: currentUserL:ocation)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let requesting = reuests {
+               print("Successfully  \(approved).")
+            }
+         }
+         ```
+         
       - (Delete) Reject existing request
+
+
+         ```swift
+         let car = PFQuery(className:"reject")
+         query.whereKey("car", equalTo: currentUserL:ocation)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let request_status = requests {
+               print("Request \(rejection).")
+            }
+         }
+         ```
+         
    - Create Ride Stop Screen
       - (Create/POST) Create a new rating
+
+         ```swift
+         let car = PF[OST(className:"rating")
+         POST.whereKey("car", equalTo: currentUserL:ocation)
+         POST.order(byDescending: "createdAt")
+         POST.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let locations = locations {
+               print("rating  \(done).")
+            }
+         }
+         ```
+         
    - Profile Screen
       - (Read/GET) Query logged in user object
-      - (Update/PUT) Update user profile image
-      -  (Read/GET) Query if user on app.
-      - (Update/PUT) Update user activity.
 
+         ```swift
+         let car = PFQuery(className:"location")
+         query.whereKey("car", equalTo: currentUserL:ocation)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let locations = locations {
+               print("Successfully arrived \(approval).")
+            }
+         }
+         ```
+         
+      - (Update/PUT) Update user profile image
+
+
+         
+      -  (Read/GET) Query if user on app.
+          ```swift
+         let car = PFQuery(className:"location")
+         query.whereKey("car", equalTo: currentUserL:ocation)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let locations = locations {
+               print("Successfully arrived \(approval).")
+            }
+         }
+         ```
+         
+      - (Update/PUT) Update user activity.
+        
+         
