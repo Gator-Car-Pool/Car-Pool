@@ -105,7 +105,7 @@ Just a prototype :)
          }
          ```
       - (Create/POST) Create a new ride
-             ```swift
+         ```swift
          let car = PFQuery(className:"location")
          query.whereKey("car", equalTo: currentUserL:ocation)
          query.order(byDescending: "createdAt")
