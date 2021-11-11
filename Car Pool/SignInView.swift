@@ -33,6 +33,7 @@ struct SignInView: View {
     
     // By default, user will be on sign up page
     @State var isSignedIn = false
+    @State var isLoggedIn = false
     @State var email = ""
     @State var password = ""
     @State var shouldShowImagePicker = false
@@ -92,23 +93,24 @@ struct SignInView: View {
                     .padding(12)
                     .background(Color.white)
 
-                    // Sign in / Sign up button
-                    Button(action: {
-                       handleAction()
-                    }, label: {
-                        HStack {
-                            Spacer()
-                            Text(isSignedIn ? "Sign in" : "Sign up")
-                                .foregroundColor(.white)
-                                .padding(.vertical, 10)
-                                .font(.system(size: 14, weight: .semibold))
-                            Spacer()
-                        }.background(Color.blue)
+                    //Nav Link allows users to access chat view (testing purposes) after verified login
+                    NavigationLink(destination: ChatView(), isActive: $isLoggedIn, label: {
+                        // Sign in / Sign up button
+                        Button(action: {
+                            handleAction()
+                        }, label: {
+                            HStack {
+                                Spacer()
+                                Text(isSignedIn ? "Sign in" : "Sign up")
+                                    .foregroundColor(.white)
+                                    .padding(.vertical, 10)
+                                    .font(.system(size: 14, weight: .semibold))
+                                Spacer()
+                            }.background(Color.blue)
+                        })
                     })
-                    
                     Text(self.signInStatusMessage)
                         .foregroundColor(.orange)
-                    
                 }
                 .padding()
             }
@@ -131,7 +133,6 @@ struct SignInView: View {
             signInUser()
         } else {
             signUpUser()
-            
         }
     }
     
@@ -144,10 +145,11 @@ struct SignInView: View {
                 self.signInStatusMessage = "Failed to sign in user: \(err)"
                 return
             }
-            
             print("Successfully signed in as user: \(result?.user.uid ?? "")")
             
             self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
+            isLoggedIn = true
+            
         }
     }
     
