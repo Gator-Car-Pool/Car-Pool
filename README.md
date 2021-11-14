@@ -7,6 +7,7 @@ Original App Design Project - README
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Video Walkthrough](#Video-Walkthrough)
 
 ## Overview
 ### Description
@@ -206,4 +207,12 @@ Just a prototype :)
          
       - (Update/PUT) Update user activity.
         
+## Video Walkthrough
+
+Sign up / Sign in
+
+<img src='https://github.com/Gator-Car-Pool/Car-Pool/blob/master/Sign%20in%20:%20Sign%20up.gif?raw=true' title='Video Walkthrough' width='320px' alt='Video Walkthrough' />
+
+         
+         
          
