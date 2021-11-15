@@ -50,6 +50,7 @@ struct SignInView: View {
                             // False tag = show this when isSignedIn is false
                             .tag(false)
                     }.pickerStyle(SegmentedPickerStyle())
+
                     
                     // Only allow users to choose a profile pic if they're signing up
                     if !isSignedIn {
@@ -87,10 +88,13 @@ struct SignInView: View {
                             .disableAutocorrection(true)
                         
                         SecureField("Password", text:    $password)
+                
                         
                     }
                     .padding(12)
                     .background(Color.white)
+                    .cornerRadius(10)
+            
 
                     // Sign in / Sign up button
                     Button(action: {
@@ -101,9 +105,10 @@ struct SignInView: View {
                             Text(isSignedIn ? "Sign in" : "Sign up")
                                 .foregroundColor(.white)
                                 .padding(.vertical, 10)
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(.system(size: 18, weight: .semibold))
                             Spacer()
                         }.background(Color.blue)
+                            .cornerRadius(50)
                     })
                     
                     Text(self.signInStatusMessage)
@@ -144,10 +149,12 @@ struct SignInView: View {
                 self.signInStatusMessage = "Failed to sign in user: \(err)"
                 return
             }
+            if (email.contains("@ufl.edu")) {
             
             print("Successfully signed in as user: \(result?.user.uid ?? "")")
             
             self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
+            }
         }
     }
     
@@ -157,10 +164,12 @@ struct SignInView: View {
     private func signUpUser() {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
             result, err in
-            if let err = err {
-                print("Failed to create user: ", err)
-                self.signInStatusMessage = "Failed to create user: \(err)"
-                return
+            if (email.contains("@ufl.edu")) {
+                if let err = err {
+                    print("Failed to create user: ", err)
+                    self.signInStatusMessage = "Failed to create user: \(err)"
+                    return
+                }
             }
             
             print("Successfully created user: \(result?.user.uid ?? "")")
