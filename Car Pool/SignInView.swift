@@ -67,14 +67,14 @@ struct SignInView: View {
                                         .frame(width: 128, height: 128, alignment: .center)
                                         .cornerRadius(64)
                                 } else {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 64))
+                                    Image(systemName: "person.crop.circle.badge.plus")
+                                        .font(.system(size: 80))
                                         .padding()
                                         // Black if light mode, white if dark mode
                                         .foregroundColor(Color(.label))
                                 }
                             }
-                            .overlay(RoundedRectangle(cornerRadius: 64) .stroke(Color(.label), lineWidth: 3))
+                            //.overlay(RoundedRectangle(cornerRadius: 64) .stroke(Color(.label), lineWidth: 3))
                         })
                     }
                     
@@ -103,7 +103,7 @@ struct SignInView: View {
                         HStack {
                             Spacer()
                             Text(isSignedIn ? "Sign in" : "Sign up")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.white)
                                 .padding(.vertical, 10)
                                 .font(.system(size: 18, weight: .semibold))
                             Spacer()
@@ -113,6 +113,7 @@ struct SignInView: View {
                     
                     Text(self.signInStatusMessage)
                         .foregroundColor(.orange)
+                        .font(.system(size: 18))
                     
                 }
                 .padding()
@@ -149,12 +150,11 @@ struct SignInView: View {
                 self.signInStatusMessage = "Failed to sign in user: \(err)"
                 return
             }
-            if (email.contains("@ufl.edu")) {
             
             print("Successfully signed in as user: \(result?.user.uid ?? "")")
             
             self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
-            }
+
         }
     }
     
@@ -164,12 +164,11 @@ struct SignInView: View {
     private func signUpUser() {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
             result, err in
-            if (email.contains("@ufl.edu")) {
-                if let err = err {
-                    print("Failed to create user: ", err)
-                    self.signInStatusMessage = "Failed to create user: \(err)"
-                    return
-                }
+
+            if let err = err {
+                print("Failed to create user: ", err)
+                self.signInStatusMessage = "Failed to create user: \(err)"
+                return
             }
             
             print("Successfully created user: \(result?.user.uid ?? "")")

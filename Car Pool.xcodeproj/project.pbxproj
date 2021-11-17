@@ -13,12 +13,16 @@
 		27C8A6D427333CE300BE3398 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C8A6D327333CE300BE3398 /* Preview Assets.xcassets */; };
 		27C8A6DF27333CE300BE3398 /* Car_PoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8A6DE27333CE300BE3398 /* Car_PoolTests.swift */; };
 		27C8A6EA27333CE300BE3398 /* Car_PoolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C8A6E927333CE300BE3398 /* Car_PoolUITests.swift */; };
+		3B162B7627435510000458A7 /* SplashPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B162B7527435510000458A7 /* SplashPageView.swift */; };
+		3B35AE2B274556D8008AFDD3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B35AE2A274556D8008AFDD3 /* SettingsView.swift */; };
+		3B35AE2D27456153008AFDD3 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B35AE2C27456153008AFDD3 /* TabBarView.swift */; };
+		3B35AE2F27456860008AFDD3 /* SystemThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B35AE2E27456860008AFDD3 /* SystemThemeManager.swift */; };
+		3B35AE3327456D7D008AFDD3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B35AE3227456D7D008AFDD3 /* Theme.swift */; };
 		3E1E42FBE74D9B1E24F4A1AA /* Pods_Car_Pool_Car_PoolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABAEAA97C932F5C9FAFA6E6A /* Pods_Car_Pool_Car_PoolUITests.framework */; };
 		77112206273C53D1007C42ED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77112205273C53D1007C42ED /* ImagePicker.swift */; };
 		77C784BA273B519C00120F48 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784B9273B519C00120F48 /* SignInView.swift */; };
 		77C784BC273B521900120F48 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784BB273B521900120F48 /* MapView.swift */; };
 		77C784BE273B522200120F48 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784BD273B522200120F48 /* ChatView.swift */; };
-		77C784C0273B522700120F48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784BF273B522700120F48 /* SettingsView.swift */; };
 		7BE3B8BB3F44FCEE2F7328BF /* Pods_Car_Pool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D82DE901A63C29C54678E9D /* Pods_Car_Pool.framework */; };
 		BDC9A8A07F351732FFC96D21 /* Pods_Car_PoolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB893E37A0D1A4DC0D2E149C /* Pods_Car_PoolTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,12 +57,16 @@
 		27C8A6E927333CE300BE3398 /* Car_PoolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car_PoolUITests.swift; sourceTree = "<group>"; };
 		27C8A6EB27333CE300BE3398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CFB2E07636F9477D5349367 /* Pods-Car Pool-Car PoolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool-Car PoolUITests.debug.xcconfig"; path = "Target Support Files/Pods-Car Pool-Car PoolUITests/Pods-Car Pool-Car PoolUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B162B7527435510000458A7 /* SplashPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPageView.swift; sourceTree = "<group>"; };
+		3B35AE2A274556D8008AFDD3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3B35AE2C27456153008AFDD3 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		3B35AE2E27456860008AFDD3 /* SystemThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemThemeManager.swift; sourceTree = "<group>"; };
+		3B35AE3227456D7D008AFDD3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		726CC7EC0BD02A4823EFC99B /* Pods-Car Pool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool.debug.xcconfig"; path = "Target Support Files/Pods-Car Pool/Pods-Car Pool.debug.xcconfig"; sourceTree = "<group>"; };
 		77112205273C53D1007C42ED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		77C784B9273B519C00120F48 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		77C784BB273B521900120F48 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		77C784BD273B522200120F48 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		77C784BF273B522700120F48 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7D82DE901A63C29C54678E9D /* Pods_Car_Pool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Pool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABAEAA97C932F5C9FAFA6E6A /* Pods_Car_Pool_Car_PoolUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Pool_Car_PoolUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DB4C1FCB26CE377F53CCDE /* Pods-Car Pool-Car PoolUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool-Car PoolUITests.release.xcconfig"; path = "Target Support Files/Pods-Car Pool-Car PoolUITests/Pods-Car Pool-Car PoolUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 		27C8A6C027333CE000BE3398 = {
 			isa = PBXGroup;
 			children = (
+				3B162B7527435510000458A7 /* SplashPageView.swift */,
 				27C8A6CB27333CE000BE3398 /* Car Pool */,
 				27C8A6DD27333CE300BE3398 /* Car PoolTests */,
 				27C8A6E827333CE300BE3398 /* Car PoolUITests */,
@@ -125,11 +134,13 @@
 				77C784B9273B519C00120F48 /* SignInView.swift */,
 				77C784BB273B521900120F48 /* MapView.swift */,
 				77C784BD273B522200120F48 /* ChatView.swift */,
-				77C784BF273B522700120F48 /* SettingsView.swift */,
 				77112205273C53D1007C42ED /* ImagePicker.swift */,
 				27C21A162733446800D5FCE4 /* GoogleService-Info.plist */,
 				27C8A6D027333CE300BE3398 /* Assets.xcassets */,
 				27C8A6D227333CE300BE3398 /* Preview Content */,
+				3B35AE2A274556D8008AFDD3 /* SettingsView.swift */,
+				3B35AE2C27456153008AFDD3 /* TabBarView.swift */,
+				3B35AE3127456D58008AFDD3 /* Theme */,
 			);
 			path = "Car Pool";
 			sourceTree = "<group>";
@@ -158,6 +169,15 @@
 				27C8A6EB27333CE300BE3398 /* Info.plist */,
 			);
 			path = "Car PoolUITests";
+			sourceTree = "<group>";
+		};
+		3B35AE3127456D58008AFDD3 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				3B35AE2E27456860008AFDD3 /* SystemThemeManager.swift */,
+				3B35AE3227456D7D008AFDD3 /* Theme.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		58654F93E724362BF4E22362 /* Frameworks */ = {
@@ -421,10 +441,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77C784C0273B522700120F48 /* SettingsView.swift in Sources */,
+				3B35AE2B274556D8008AFDD3 /* SettingsView.swift in Sources */,
 				77C784BE273B522200120F48 /* ChatView.swift in Sources */,
+				3B35AE2D27456153008AFDD3 /* TabBarView.swift in Sources */,
+				3B162B7627435510000458A7 /* SplashPageView.swift in Sources */,
+				3B35AE2F27456860008AFDD3 /* SystemThemeManager.swift in Sources */,
 				77C784BA273B519C00120F48 /* SignInView.swift in Sources */,
 				77112206273C53D1007C42ED /* ImagePicker.swift in Sources */,
+				3B35AE3327456D7D008AFDD3 /* Theme.swift in Sources */,
 				77C784BC273B521900120F48 /* MapView.swift in Sources */,
 				27C8A6CD27333CE000BE3398 /* Car_PoolApp.swift in Sources */,
 			);
