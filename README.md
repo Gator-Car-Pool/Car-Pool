@@ -29,7 +29,7 @@ Allows University of Florida students to carpool with each other. After chatting
 
 - [X] User can sign up/sign in
 - [ ] UF emails only
-- [ ] Users can reset their passwords
+- [X] Users can reset their passwords
 - [ ] User can see nearby drivers/riders on mapview and tableview
 - [ ] Tableview will update depending on if the user designates themself as a rider or driver
 - [ ] Users will see table view cells with profile pictures, username, and the chat button
