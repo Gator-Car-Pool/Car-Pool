@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct ChatList: View {
+    @ObservedObject var viewModel = ChatroomViewModel()
+    
+    init() {
+        viewModel.fetchData()
+    }
+    
     var body: some View {
-        Text("ChatList")
+        NavigationView{
+            List(viewModel.chatrooms) { chatroom in
+                HStack{
+                    Text(chatroom.title)
+                    Spacer()
+                }
+            }
+        }
     }
 }
 

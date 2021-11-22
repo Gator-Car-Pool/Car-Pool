@@ -17,8 +17,10 @@ struct Login: View {
             VStack {
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
 
                 Button(action: {
                     sessionSession.signIn(email: email, password: password)
