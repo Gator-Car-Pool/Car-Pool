@@ -37,7 +37,7 @@ Allows University of Florida students to carpool with each other. After chatting
 - [ ] Buttons above keyboard to request(for riders), accept(for drivers) and cancel
 - [ ] After acceptance, drivers will be transferred to a map app and be shown a route to the rider
 - [ ] Basic profile page with profile picture (that can be changed), username, and UF email used to sign up
-- [ ] Work with at least one map app
+- [x] Work with at least one map app
 
 **Optional Nice-to-have Stories**
 
@@ -214,5 +214,7 @@ Sign up / Sign in
 <img src='https://github.com/Gator-Car-Pool/Car-Pool/blob/master/Sign%20in%20:%20Sign%20up.gif?raw=true' title='Video Walkthrough' width='320px' alt='Video Walkthrough' />
 
          
+<img src='https://media.giphy.com/media/DhJuNbJDVCl61ZFb6i/giphy.gif' title='Video Walkthrough' width='320px' alt='Map Walkthrough' />
+
          
          
