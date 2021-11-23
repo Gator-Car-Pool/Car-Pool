@@ -26,12 +26,10 @@ class ChatroomViewModel: ObservableObject{
         }
         if (user != nil){
             print("USER IS NOT NIL")
+            print(user!.uid)
             
             
-            
-            
-            
-            db.collection("chats").whereField("users", arrayContains: user!.uid as String).addSnapshotListener({(snapshot, error) in
+            db.collection("chats").whereField("users", arrayContains: user!.uid).addSnapshotListener({(snapshot, error) in
                 guard let documents = snapshot?.documents else{
                     print("no docs returned")
                     return

@@ -22,6 +22,7 @@ struct ChatList: View {
                     Spacer()
                 }
             }
+            .navigationTitle("Messages")
         }
     }
 }
