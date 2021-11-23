@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatList: View {
     @ObservedObject var viewModel = ChatroomViewModel()
+    @State var joinModal = false
     
     init() {
         viewModel.fetchData()
@@ -17,12 +18,23 @@ struct ChatList: View {
     var body: some View {
         NavigationView{
             List(viewModel.chatrooms) { chatroom in
-                HStack{
-                    Text(chatroom.title)
-                    Spacer()
+                NavigationLink(destination: Messages(chatroom: chatroom)){
+                    HStack{
+                        Text(chatroom.title)
+                        Spacer()
+                    }
                 }
+                
             }
             .navigationTitle("Messages")
+            .navigationBarItems(trailing: Button(action: {
+                self.joinModal = true
+            }, label: {
+                Image(systemName: "plus.circle")
+            }))
+            .sheet(isPresented: $joinModal, content:{
+                join(isOpen: $joinModal)
+            })
         }
     }
 }
