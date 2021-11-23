@@ -7,7 +7,6 @@ Original App Design Project - README
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
-1. [Video Walkthrough](#Video-Walkthrough)
 
 ## Overview
 ### Description
@@ -27,22 +26,20 @@ Allows University of Florida students to carpool with each other. After chatting
 
 **Required Must-have Stories**
 
-- [X] User can sign up/sign in
-- [ ] UF emails only
-- [X] Users can reset their passwords
-- [ ] User can see nearby drivers/riders on mapview and tableview
-- [ ] Tableview will update depending on if the user designates themself as a rider or driver
-- [ ] Users will see table view cells with profile pictures, username, and the chat button
-- [ ] Users can tap on the chat button and sort out the details like destination, how many riders, etc.
-- [ ] Buttons above keyboard to request(for riders), accept(for drivers) and cancel
-- [ ] After acceptance, drivers will be transferred to a map app and be shown a route to the rider
-- [ ] Basic profile page with profile picture (that can be changed), username, and UF email used to sign up
-- [x] Work with at least one map app
+* User can sign up/sign in
+* User can see nearby drivers/riders on mapview and tableview
+* Tableview will update depending on if the user designates themself as a rider or driver
+    * Users will see table view cells with profile pictures, username, and the chat button
+* Users can tap on the chat button and sort out the details like destination, how many riders, etc.
+* Buttons above keyboard to request(for riders), accept(for drivers) and cancel
+* After acceptance, drivers will be transferred to a map app and be shown a route to the rider
+* Basic profile page with profile picture (that can be changed), username, and UF email used to sign up
+* Work with at least one map app
 
 **Optional Nice-to-have Stories**
 
-- [ ] Work with user's preferred map app
-- [ ] User profiles can be fully fleshed out with a short bio/interests/etc.
+* Work with user's preferred map app
+* User profiles can be fully fleshed out with a short bio/interests/etc.
 
 ### 2. Screen Archetypes
 
@@ -207,14 +204,4 @@ Just a prototype :)
          
       - (Update/PUT) Update user activity.
         
-## Video Walkthrough
-
-Sign up / Sign in
-
-<img src='https://github.com/Gator-Car-Pool/Car-Pool/blob/master/Sign%20in%20:%20Sign%20up.gif?raw=true' title='Video Walkthrough' width='320px' alt='Video Walkthrough' />
-
-         
-<img src='https://media.giphy.com/media/DhJuNbJDVCl61ZFb6i/giphy.gif' title='Video Walkthrough' width='320px' alt='Map Walkthrough' />
-
-         
          

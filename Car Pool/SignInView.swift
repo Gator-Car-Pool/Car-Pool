@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+
 // Singleton obj to allow us to do stuff in the preview
 class FirebaseManager: NSObject {
     
@@ -50,6 +51,7 @@ struct SignInView: View {
                             // False tag = show this when isSignedIn is false
                             .tag(false)
                     }.pickerStyle(SegmentedPickerStyle())
+
                     
                     // Only allow users to choose a profile pic if they're signing up
                     if !isSignedIn {
@@ -66,14 +68,14 @@ struct SignInView: View {
                                         .frame(width: 128, height: 128, alignment: .center)
                                         .cornerRadius(64)
                                 } else {
-                                    Image(systemName: "person.fill")
-                                        .font(.system(size: 64))
+                                    Image(systemName: "person.crop.circle.badge.plus")
+                                        .font(.system(size: 80))
                                         .padding()
                                         // Black if light mode, white if dark mode
                                         .foregroundColor(Color(.label))
                                 }
                             }
-                            .overlay(RoundedRectangle(cornerRadius: 64) .stroke(Color(.label), lineWidth: 3))
+                            //.overlay(RoundedRectangle(cornerRadius: 64) .stroke(Color(.label), lineWidth: 3))
                         })
                     }
                     
@@ -87,10 +89,13 @@ struct SignInView: View {
                             .disableAutocorrection(true)
                         
                         SecureField("Password", text:    $password)
+                
                         
                     }
                     .padding(12)
                     .background(Color.white)
+                    .cornerRadius(10)
+            
 
                     // Sign in / Sign up button
                     Button(action: {
@@ -99,15 +104,17 @@ struct SignInView: View {
                         HStack {
                             Spacer()
                             Text(isSignedIn ? "Sign in" : "Sign up")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.white)
                                 .padding(.vertical, 10)
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(.system(size: 18, weight: .semibold))
                             Spacer()
                         }.background(Color.blue)
+                            .cornerRadius(50)
                     })
                     
                     Text(self.signInStatusMessage)
                         .foregroundColor(.orange)
+                        .font(.system(size: 18))
                     
                 }
                 .padding()
@@ -148,6 +155,7 @@ struct SignInView: View {
             print("Successfully signed in as user: \(result?.user.uid ?? "")")
             
             self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
+
         }
     }
     
@@ -157,6 +165,7 @@ struct SignInView: View {
     private func signUpUser() {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
             result, err in
+
             if let err = err {
                 print("Failed to create user: ", err)
                 self.signInStatusMessage = "Failed to create user: \(err)"
