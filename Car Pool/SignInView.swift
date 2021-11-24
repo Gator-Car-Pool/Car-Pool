@@ -8,28 +8,6 @@
 import SwiftUI
 import Firebase
 
-
-// Singleton obj to allow us to do stuff in the preview
-class FirebaseManager: NSObject {
-    
-    let auth: Auth
-    let storage: Storage
-    let firestore: Firestore
-    
-    // Singleton obj
-    static let shared = FirebaseManager()
-    
-    override init() {
-        FirebaseApp.configure()
-        
-        self.auth = Auth.auth()
-        self.storage = Storage.storage()
-        self.firestore = Firestore.firestore()
-        
-        super.init()
-    }
-}
-
 struct SignInView: View {
     
     // By default, user will be on sign up page
@@ -37,6 +15,7 @@ struct SignInView: View {
     @State var email = ""
     @State var password = ""
     @State var shouldShowImagePicker = false
+    @State var signInStatusMessage = ""
     
     var body: some View {
         NavigationView {
@@ -51,7 +30,6 @@ struct SignInView: View {
                             // False tag = show this when isSignedIn is false
                             .tag(false)
                     }.pickerStyle(SegmentedPickerStyle())
-
                     
                     // Only allow users to choose a profile pic if they're signing up
                     if !isSignedIn {
@@ -75,7 +53,6 @@ struct SignInView: View {
                                         .foregroundColor(Color(.label))
                                 }
                             }
-                            //.overlay(RoundedRectangle(cornerRadius: 64) .stroke(Color(.label), lineWidth: 3))
                         })
                     }
                     
@@ -89,14 +66,12 @@ struct SignInView: View {
                             .disableAutocorrection(true)
                         
                         SecureField("Password", text:    $password)
-                
-                        
                     }
                     .padding(12)
                     .background(Color.white)
                     .cornerRadius(10)
-            
-
+                    .foregroundColor(Color(.black))
+                                
                     // Sign in / Sign up button
                     Button(action: {
                        handleAction()
@@ -111,6 +86,23 @@ struct SignInView: View {
                         }.background(Color.blue)
                             .cornerRadius(50)
                     })
+                    
+                    // Password reset button
+                    if isSignedIn {
+                        Button(action: {
+                           sendResetPasswordEmail()
+                        }, label: {
+                            HStack {
+                                Spacer()
+                                Text("Reset password")
+                                    .foregroundColor(Color.white)
+                                    .padding(.vertical, 10)
+                                    .font(.system(size: 18, weight: .semibold))
+                                Spacer()
+                            }.background(Color.blue)
+                                .cornerRadius(50)
+                        })
+                    }
                     
                     Text(self.signInStatusMessage)
                         .foregroundColor(.orange)
@@ -155,12 +147,9 @@ struct SignInView: View {
             print("Successfully signed in as user: \(result?.user.uid ?? "")")
             
             self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
-
         }
     }
-    
-    @State var signInStatusMessage = ""
-    
+        
     // Function for signing up
     private func signUpUser() {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
@@ -220,11 +209,24 @@ struct SignInView: View {
                 print("Success")
             }
     }
+    
+    private func sendResetPasswordEmail() {
+        FirebaseManager.shared.auth.sendPasswordReset(withEmail: email) { err in
+            if let err = err {
+                print(err)
+                self.signInStatusMessage = "Invalid email"
+                return
+            } else {
+                print("Success")
+                self.signInStatusMessage = ("Password reset email sent!")
+            }
+        }
+    }
 }
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView()
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
 }
