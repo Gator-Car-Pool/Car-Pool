@@ -204,4 +204,8 @@ Just a prototype :)
          
       - (Update/PUT) Update user activity.
         
+
+https://user-images.githubusercontent.com/35617601/143364645-aa5247fe-4fc1-4d76-ba7b-3cbdb2582e23.mov
+
+
          
