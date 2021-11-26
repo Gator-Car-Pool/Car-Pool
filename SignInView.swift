@@ -110,7 +110,7 @@ struct SignInView: View {
                         .font(.system(size: 18))
                     if auth == true {
                         NavigationLink(destination:
-                                        TabBarView().environmentObject(user),
+                                        FloatingTabBar().environmentObject(user),
                            isActive: self.$pushActive) {
                             Loader()
                         }.hidden()
@@ -164,6 +164,7 @@ struct SignInView: View {
             
             auth = true;
             let db = Firestore.firestore()
+            
             
            
 

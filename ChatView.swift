@@ -9,12 +9,18 @@ import SwiftUI
 
 struct ChatView: View {
     var body: some View {
-        Text("Hello world!")
+        VStack {
+            Text("Hello, World!")
+            Divider()
+            Spacer()
+        }
+        .background(Color.purple)
+         
     }
 }
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatView().navigationBarBackButtonHidden(true)
     }
 }

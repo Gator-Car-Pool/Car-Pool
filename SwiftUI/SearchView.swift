@@ -31,6 +31,9 @@ struct SearchView: View {
                 
                 SearchBar(map: self.$map, source: self.$source, destination: self.$destination, result: self.$result, name: self.$name, distance: self.$distance, time: self.$time,txt: self.$txt)
                     .padding(.vertical, 150)
+                    .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+
+                    
 
                 if self.txt != ""{
                     
@@ -43,6 +46,7 @@ struct SearchView: View {
                             Text(i.address)
                                 .font(.caption)
                         }
+                        .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
                         .onTapGesture {
                             
                             self.destination = i.coordinate
@@ -56,6 +60,7 @@ struct SearchView: View {
             .padding(.horizontal, 25)
         }
         .background(Color.black.opacity(0.2).edgesIgnoringSafeArea(.all)
+                        
         .onTapGesture {
             self.show.toggle()
         })

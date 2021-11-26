@@ -20,9 +20,12 @@ struct Point: Identifiable {
     }
 }
 struct MainView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @ObservedObject private var locationManager = LocationManager()
+    
     @State private var region = MKCoordinateRegion.defaultRegion
+    
     @State private var cancellable: AnyCancellable?
     @State var selection: Int? = nil
     @State var toPickScreen: Bool = false
@@ -31,6 +34,9 @@ struct MainView: View {
     @State var refresh: Bool = false;
     @State var firstAppear: Bool = true;
     @State var firstLocationAction: Bool = true;
+    @State var profile_pic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+
+    @State var show = false
 
     @StateObject var user = User();
 
@@ -38,7 +44,10 @@ struct MainView: View {
     private func setCurrentLocation() {
         cancellable = locationManager.$location.sink { location in
             region = MKCoordinateRegion(center: location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 2500, longitudinalMeters: 2500)
+          
+
         }
+
     }
 
     
@@ -83,7 +92,37 @@ struct MainView: View {
 
                     }
                 }
+                
+                
             }
+    
+    func fetchUserData(){
+        let db = Firestore.firestore()
+        db.collection("users").getDocuments() { snapshot, error in
+            if error == nil {
+                if let snapshot = snapshot {
+                    for doc in snapshot.documents{
+                        print(FirebaseManager.shared.auth.currentUser?.uid as? String)
+                        if doc.data()["uid"] as? String == FirebaseManager.shared.auth.currentUser?.uid as? String {
+                        
+                            self.profile_pic =  (doc.data()["profilePicUrl"] as? String)!
+
+                            print("found")
+                            
+//                                let annotation = MKPointAnnotation();
+        
+                    }
+                    print("good")
+                }
+            }
+            else {
+
+            }
+        }
+
+    }
+    }
+    
     
     func addOverlay(_ overlay: MKOverlay) -> some View {
           MKMapView.appearance().addOverlay(overlay)
@@ -104,6 +143,7 @@ struct MainView: View {
 
     var body: some View {
         
+ 
         NavigationView {
         ZStack {
 
@@ -164,8 +204,10 @@ struct MainView: View {
 
 
             .onAppear {
-                setCurrentLocation()
+              
+                fetchUserData()
                 if firstAppear {
+                    setCurrentLocation()
                 fetchData()
                 }
                 firstAppear = false;
@@ -222,10 +264,8 @@ struct MainView: View {
                             .zIndex(1)
                             
                             
-                            // going to apply shadows to look like neuromorphic feel...
-                            let imageUrlString =  FirebaseManager.shared.auth.currentUser?.photoURL as? String
 
-                            let imageUrl = URL(string: imageUrlString ?? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")!
+                            let imageUrl = URL(string: profile_pic)!
 
                             let imageData = try! Data(contentsOf: imageUrl)
                             let image = UIImage(data: imageData)
@@ -247,6 +287,7 @@ struct MainView: View {
                             Text("User")
                                 .font(.title)
                                 .foregroundColor(Color.black.opacity(0.8))
+                            
                             
                             Text(            FirebaseManager.shared.auth.currentUser?.email ?? "")
                                 .foregroundColor(Color.black.opacity(0.7))
@@ -322,7 +363,7 @@ struct MainView: View {
                         
                         VStack(spacing: 12){
                             
-                            Image("passenger")
+                            Image("mode")
                             .resizable()
                             .frame(width: 80, height: 80)
                             
@@ -360,6 +401,7 @@ struct MainView: View {
 
             if showRides {
                 
+       
                 VStack{
                     HStack(spacing: 5){
                         
@@ -380,10 +422,11 @@ struct MainView: View {
                         Spacer(minLength: 0)
                         
                         Button(action: {
+                            fetchData()
                             
                         }) {
                             
-                            Text("Requests")
+                            Text("refresh")
                                 .foregroundColor(.white)
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 25)
@@ -410,6 +453,9 @@ struct MainView: View {
                         Spacer(minLength: 0)
                     }
                     .padding(.top, -25)
+                    
+                    Spacer()
+                    ToggleView(show: $show)
                     
                     List(annontations) {
                         Point in ZStack {
@@ -447,7 +493,6 @@ struct MainView: View {
                     self.showLocationPicker.toggle();
                     self.pushActive.toggle();
 
-                    self.setCurrentLocation()
 
             })
                 
@@ -455,6 +500,10 @@ struct MainView: View {
         }
   
             if showDetails {
+                
+            
+            
+            
                 ZStack(alignment: .topLeading) {
                     Color.white.opacity(0.8)
                         .frame(width: 300, height: 400)
@@ -464,6 +513,14 @@ struct MainView: View {
                     
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
+                            
+                            Text("👩🏾‍🦳")
+                                .shadow(radius: 3)
+                                .font(.largeTitle)
+                                .frame(width: 50, height: 50)
+                                .overlay(
+                                    Circle().stroke(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.blue]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/),lineWidth: 3))
+              
                             Text("User")
                             .font(.system(size: 24, weight: .bold, design: .rounded))
                         
@@ -629,6 +686,30 @@ struct MainView: View {
             }
             .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.4)
 
+            Button(action: {
+                print("Pick location")
+                
+                setCurrentLocation();
+                
+            }) {
+
+                HStack{
+                    Image("target")
+                        .resizable()
+                        .frame(width: 20, height:20)
+
+
+                }
+                .padding()
+
+                .background(Color.white)
+                .cornerRadius(40)
+                .frame(height: isVisible ? nil : 0)
+                 .disabled(!isVisible)
+               
+
+            }
+            .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.8)
         }
         .edgesIgnoringSafeArea(.all)
             NavigationLink(destination: PickScreen(), isActive: self.$toPickScreen){
@@ -647,15 +728,21 @@ struct MainView: View {
 struct RidesDetailView: View {
     let current: Point
     @State private var region = MKCoordinateRegion.defaultRegion
-
+  
     var body: some View {
         VStack() {
             
             // Meditation Image
+            
+            Text("Ride details")
+                .font(.largeTitle)
+                .fontWeight(.bold)
            
                 Image("uf")
                 .cornerRadius(30)
+                    
             .padding(10)
+                    .padding(.vertical, 10)
             // Title
             Text(current.name)
                 .font(.largeTitle)
@@ -665,28 +752,22 @@ struct RidesDetailView: View {
             Text("This carpool started at \(current.time_created).")
             
             // GeometryReader for button width
-            GeometryReader {
-                reader in
+        
                 
                 // Button stack
-                Button(action: {
-                    
-                    
-                    
-                }) {
-                    
-                    Text("Send Request")
+            Button(action: {}) {
+                Text("Request to Ride")
+                    .padding()
+                    .foregroundColor(.blue)
+                    .overlay(Capsule().stroke(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.blue]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/), lineWidth: 8))
+                    .clipShape(Capsule())
+            }
+            .padding(.vertical,    100)
 
-                        .foregroundColor(.white)
-                        .padding(.vertical, 10)
-                        .frame(width: UIScreen.main.bounds.width / 2)
-                }
-                .background(Color.orange.opacity(0.9))
-                .clipShape(Capsule())
+         
                 
                 
       
-            }.padding()
         }
         .padding()
     }

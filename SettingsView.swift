@@ -13,7 +13,19 @@ struct SettingsView: View {
     
     @Binding var darkModeEnabled: Bool
     @Binding var systemThemeEnabled: Bool
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
+    var btnBack : some View { Button(action: {
+         self.presentationMode.wrappedValue.dismiss()
+         }) {
+             HStack {
+             Image(systemName: "chevron.right")
+             Text("Log out")// set image here
+             }
+         }
+     }
     
+
     var body: some View {
         
         NavigationView {
@@ -61,8 +73,11 @@ struct SettingsView: View {
             
         }
             .navigationTitle("Settings")
+           
+            
         
-    }
+    } .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: btnBack)
 }
 
     struct SettingsView_Previews: PreviewProvider {

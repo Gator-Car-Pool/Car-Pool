@@ -12,6 +12,7 @@ import Firebase
 struct Car_PoolApp: App {
     
     @StateObject var user = User();
+    @State var show = false;
    
     init() {
       FirebaseApp.configure()
@@ -22,9 +23,10 @@ struct Car_PoolApp: App {
 
             ContentView()
                 .environmentObject(user)
-        }
-     
+
+            
+//            ToggleView(show: $show)
     }
     
-    
+    }
 }

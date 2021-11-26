@@ -70,6 +70,9 @@ struct MapView : UIViewRepresentable {
             self.parent.source = locations.last!.coordinate
             
             self.parent.map.region = region
+            
+            
+            manager.stopUpdatingLocation()
         }
         
         @objc func tap(ges: UITapGestureRecognizer){
@@ -116,7 +119,7 @@ struct MapView : UIViewRepresentable {
                 let polyline = dir?.routes[0].polyline
                 
                 let dis = dir?.routes[0].distance as! Double
-                self.parent.distance = String(format: "%.1f", dis / 1000)
+                self.parent.distance = String(format: "%.1f", ((dis / 1000) * 0.621371))
                 
                 let time = dir?.routes[0].expectedTravelTime as! Double
                 self.parent.time = String(format: "%.1f", time / 60)
@@ -127,7 +130,7 @@ struct MapView : UIViewRepresentable {
                 
                 self.parent.map.setRegion(MKCoordinateRegion(polyline!.boundingMapRect), animated: true)
             }
-            
+
             self.parent.map.removeAnnotations(self.parent.map.annotations)
             self.parent.map.addAnnotation(point)
         }

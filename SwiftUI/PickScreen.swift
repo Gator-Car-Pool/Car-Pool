@@ -27,7 +27,8 @@ struct PickScreen : View {
     @State var doc = ""
     @State var data : Data = .init(count: 0)
     @State var search = false
-    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
     func getTime()->String{
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -40,6 +41,15 @@ struct PickScreen : View {
           
         
    }
+    
+    var btnBack : some View { Button(action: {
+         self.presentationMode.wrappedValue.dismiss()
+         }) {
+             HStack {
+             Image(systemName: "chevron.left") // set image here
+             }
+         }
+     }
     
     var body: some View{
         
@@ -94,7 +104,7 @@ struct PickScreen : View {
                                         .fontWeight(.bold)
                                     Text(self.name)
                                     
-                                    Text("Distance - "+self.distance+" KM")
+                                    Text("Distance - "+self.distance+" Miles")
                                     
                                     Text("Expexted Time - "+self.time + "Min")
                                 }
@@ -179,6 +189,7 @@ struct PickScreen : View {
             if self.search{
                 
                 SearchView(show: self.$search, map: self.$map, source: self.$source, destination: self.$destination, name: self.$name, distance: self.$distance, time: self.$time,detail: self.$show)
+                    .cornerRadius(10)
             }
         }
         .edgesIgnoringSafeArea(.all)
@@ -189,7 +200,8 @@ struct PickScreen : View {
             
         
         }
-        
+        .navigationBarBackButtonHidden(true)
+           .navigationBarItems(leading: btnBack)
         
 
         
