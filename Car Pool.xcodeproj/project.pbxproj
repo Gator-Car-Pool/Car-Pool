@@ -11,9 +11,6 @@
 		272D12D227503D6E0003A0DE /* join.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12D127503D6E0003A0DE /* join.swift */; };
 		272D12D427503D960003A0DE /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12D327503D960003A0DE /* ChatList.swift */; };
 		272D12D627503DD40003A0DE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12D527503DD40003A0DE /* Login.swift */; };
-		272D12D827503E030003A0DE /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12D727503E030003A0DE /* SessionStore.swift */; };
-		272D12DB27503E940003A0DE /* ChatroomsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12DA27503E940003A0DE /* ChatroomsViewModel.swift */; };
-		272D12DD27503EDC0003A0DE /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12DC27503EDC0003A0DE /* MessageViewModel.swift */; };
 		272D12E32750A13A0003A0DE /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272D12E22750A13A0003A0DE /* TabBar.swift */; };
 		2749AD6B274C6E5A0085F63E /* MainMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2749AD6A274C6E5A0085F63E /* MainMap.swift */; };
 		27681C572750C5C900D3AE94 /* Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27681C562750C5C900D3AE94 /* Toggle.swift */; };
@@ -44,6 +41,9 @@
 		27F66439274C43A0001A860D /* backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F66438274C43A0001A860D /* backup.swift */; };
 		27F6643B274C4C0F001A860D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F6643A274C4C0F001A860D /* LocationManager.swift */; };
 		27F6643D274C4D12001A860D /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F6643C274C4D12001A860D /* MKCoordinateRegion+Extensions.swift */; };
+		2DAAF7C82751BB6300F88EAA /* ChatroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAF7C72751BB6300F88EAA /* ChatroomModel.swift */; };
+		2DAAF7CB2751BB7F00F88EAA /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAF7CA2751BB7F00F88EAA /* MessageModel.swift */; };
+		2DAAF7CD2751BB8B00F88EAA /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAAF7CC2751BB8B00F88EAA /* SessionModel.swift */; };
 		3E1E42FBE74D9B1E24F4A1AA /* Pods_Car_Pool_Car_PoolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABAEAA97C932F5C9FAFA6E6A /* Pods_Car_Pool_Car_PoolUITests.framework */; };
 		77112206273C53D1007C42ED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77112205273C53D1007C42ED /* ImagePicker.swift */; };
 		77C784BA273B519C00120F48 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784B9273B519C00120F48 /* SignInView.swift */; };
@@ -75,9 +75,6 @@
 		272D12D127503D6E0003A0DE /* join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = join.swift; sourceTree = "<group>"; };
 		272D12D327503D960003A0DE /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		272D12D527503DD40003A0DE /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		272D12D727503E030003A0DE /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
-		272D12DA27503E940003A0DE /* ChatroomsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsViewModel.swift; sourceTree = "<group>"; };
-		272D12DC27503EDC0003A0DE /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		272D12E22750A13A0003A0DE /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		2749AD68274C6CE90085F63E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Car Pool/Info.plist"; sourceTree = SOURCE_ROOT; };
 		2749AD6A274C6E5A0085F63E /* MainMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMap.swift; sourceTree = "<group>"; };
@@ -116,6 +113,9 @@
 		27F6643A274C4C0F001A860D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		27F6643C274C4D12001A860D /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		2CFB2E07636F9477D5349367 /* Pods-Car Pool-Car PoolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool-Car PoolUITests.debug.xcconfig"; path = "Target Support Files/Pods-Car Pool-Car PoolUITests/Pods-Car Pool-Car PoolUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2DAAF7C72751BB6300F88EAA /* ChatroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomModel.swift; sourceTree = "<group>"; };
+		2DAAF7CA2751BB7F00F88EAA /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		2DAAF7CC2751BB8B00F88EAA /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		726CC7EC0BD02A4823EFC99B /* Pods-Car Pool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool.debug.xcconfig"; path = "Target Support Files/Pods-Car Pool/Pods-Car Pool.debug.xcconfig"; sourceTree = "<group>"; };
 		77112205273C53D1007C42ED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		77C784B9273B519C00120F48 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -161,13 +161,8 @@
 		272D12CE27503D0B0003A0DE /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				272D12CF27503D1C0003A0DE /* Messages.swift */,
-				272D12D127503D6E0003A0DE /* join.swift */,
-				272D12D327503D960003A0DE /* ChatList.swift */,
-				272D12D527503DD40003A0DE /* Login.swift */,
-				272D12D727503E030003A0DE /* SessionStore.swift */,
-				272D12DA27503E940003A0DE /* ChatroomsViewModel.swift */,
-				272D12DC27503EDC0003A0DE /* MessageViewModel.swift */,
+				2DAAF7CF2751BDA500F88EAA /* Screens */,
+				2DAAF7CE2751BC6200F88EAA /* Models */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -276,6 +271,27 @@
 				2768971C274DD8B5005D1619 /* FirebaseManager.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		2DAAF7CE2751BC6200F88EAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2DAAF7C72751BB6300F88EAA /* ChatroomModel.swift */,
+				2DAAF7CA2751BB7F00F88EAA /* MessageModel.swift */,
+				2DAAF7CC2751BB8B00F88EAA /* SessionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2DAAF7CF2751BDA500F88EAA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				272D12D327503D960003A0DE /* ChatList.swift */,
+				272D12D127503D6E0003A0DE /* join.swift */,
+				272D12D527503DD40003A0DE /* Login.swift */,
+				272D12CF27503D1C0003A0DE /* Messages.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		58654F93E724362BF4E22362 /* Frameworks */ = {
@@ -555,7 +571,6 @@
 				77C784BA273B519C00120F48 /* SignInView.swift in Sources */,
 				2749AD6B274C6E5A0085F63E /* MainMap.swift in Sources */,
 				27D9F8EC274B4FDC00313977 /* Location.swift in Sources */,
-				272D12DB27503E940003A0DE /* ChatroomsViewModel.swift in Sources */,
 				77112206273C53D1007C42ED /* ImagePicker.swift in Sources */,
 				27689721274DE2E8005D1619 /* AuthView.swift in Sources */,
 				27ADCB86274C9A6600A383F9 /* backup2.swift in Sources */,
@@ -567,13 +582,14 @@
 				27D9F8E1274B4FD600313977 /* SystemThemeManager.swift in Sources */,
 				27F66439274C43A0001A860D /* backup.swift in Sources */,
 				272D12E32750A13A0003A0DE /* TabBar.swift in Sources */,
-				272D12DD27503EDC0003A0DE /* MessageViewModel.swift in Sources */,
+				2DAAF7C82751BB6300F88EAA /* ChatroomModel.swift in Sources */,
 				2768971D274DD8B5005D1619 /* FirebaseManager.swift in Sources */,
+				2DAAF7CB2751BB7F00F88EAA /* MessageModel.swift in Sources */,
 				272D12D427503D960003A0DE /* ChatList.swift in Sources */,
 				27D9F8F0274B4FDC00313977 /* TabBarView.swift in Sources */,
 				27689725274EBA8B005D1619 /* User.swift in Sources */,
+				2DAAF7CD2751BB8B00F88EAA /* SessionModel.swift in Sources */,
 				27D9F8E0274B4FD600313977 /* Theme.swift in Sources */,
-				272D12D827503E030003A0DE /* SessionStore.swift in Sources */,
 				272D12D227503D6E0003A0DE /* join.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -4,7 +4,6 @@
 //
 //  Created by Jesus Jurado on 11/22/21.
 //
-
 import Foundation
 import Firebase
 
@@ -14,8 +13,7 @@ struct Chatroom: Codable, Identifiable{
     var joinCode: Int
 }
 
-class ChatroomViewModel: ObservableObject{
-    
+class ChatroomModel: ObservableObject{
     @Published var chatrooms = [Chatroom]()
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser

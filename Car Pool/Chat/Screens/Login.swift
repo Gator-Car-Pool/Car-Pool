@@ -9,7 +9,7 @@ import SwiftUI
 struct Login: View {
     @State var email = ""
     @State var password = ""
-    @ObservedObject var sessionSession = SessionStore()
+    @ObservedObject var sessionSession = SessionModel()
 
 
     var body: some View {

@@ -11,7 +11,7 @@ struct join: View {
     @Binding var isOpen: Bool
     @State var joinCode = ""
     @State var newTitle = ""
-    @ObservedObject var viewModel = ChatroomViewModel()
+    @ObservedObject var viewModel = ChatroomModel()
     
     var body: some View {
         NavigationView {

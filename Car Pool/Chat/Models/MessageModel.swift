@@ -4,7 +4,6 @@
 //
 //  Created by Jesus Jurado on 11/22/21.
 //
-
 import Foundation
 import Firebase
 
@@ -14,7 +13,7 @@ struct Message: Codable, Identifiable {
     var name: String
 }
 
-class MessageViewModel: ObservableObject {
+class MessageModel: ObservableObject {
     @Published var messages = [Message]()
     private let db = Firestore.firestore()
     private let user = Auth.auth().currentUser

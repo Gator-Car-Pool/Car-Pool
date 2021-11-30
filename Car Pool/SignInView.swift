@@ -15,6 +15,7 @@ struct SignInView: View {
     @State var pushActive = false
     @StateObject var user = User()
     @State var display = true;
+    @ObservedObject var sessionStore = SessionModel()
     
     @State var auth = false
     var body: some View {
@@ -115,6 +116,7 @@ struct SignInView: View {
                            isActive: self.$pushActive) {
                             Loader()
                         }.hidden()
+                        
                     
                 }
                 }
@@ -124,11 +126,10 @@ struct SignInView: View {
             .navigationTitle(isSignedIn ? "Sign in" : "Sign up")
             .background(Color(.init(white: 0, alpha: 0.05))
                             .ignoresSafeArea())
-        }
+       }
         .navigationViewStyle(StackNavigationViewStyle())
         .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
             ImagePicker(image: $image)
-       
         }
     }
     
@@ -138,8 +139,10 @@ struct SignInView: View {
     private func handleAction() {
         if isSignedIn {
             signInUser()
+            sessionStore.signIn(email: email, password: password)
         } else {
             signUpUser()
+            sessionStore.signUp(email: email, password: password)
             
         }
     }

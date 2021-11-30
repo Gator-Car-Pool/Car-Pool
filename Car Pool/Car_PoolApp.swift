@@ -23,9 +23,9 @@ struct Car_PoolApp: App {
     var body: some Scene {
         WindowGroup {
 //
-//            ContentView()
-//                .environmentObject(user)
-            FloatingTabBar()
+            ContentView()
+                .environmentObject(user)
+//            FloatingTabBar()
  
             
 //            ToggleView(show: $show)

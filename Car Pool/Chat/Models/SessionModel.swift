@@ -7,14 +7,14 @@
 import Foundation
 import FirebaseAuth
 
-struct UserTest {
+struct ChatUser {
     var uid: String
     var email: String
 }
 
 
-class SessionStore: ObservableObject {
-    @Published var session: UserTest?
+class SessionModel: ObservableObject {
+    @Published var session: ChatUser?
     @Published var isAnon: Bool = false
     var handle: AuthStateDidChangeListenerHandle?
     let authRef = Auth.auth()
@@ -28,7 +28,7 @@ class SessionStore: ObservableObject {
                 print(user.uid)
                 print(user.email)
                 self.isAnon = false
-                self.session =  UserTest(uid: user.uid, email: user.email!)
+                self.session =  ChatUser(uid: user.uid, email: user.email!)
                 
             } else {
                 print("Unsucessful User")
