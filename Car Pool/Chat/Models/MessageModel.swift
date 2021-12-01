@@ -20,7 +20,7 @@ class MessageModel: ObservableObject {
     
     func sendMessage(messageContent: String, docId: String) {
         if (user != nil) {
-            db.collection("chats").document(docId).collection("messages").addDocument(data: [
+            db.collection("chatrooms").document(docId).collection("messages").addDocument(data: [
                                                                                         "sentAt": Date(),
                                                                                         "displayName": user!.email,
                                                                                         "content": messageContent,
@@ -30,7 +30,7 @@ class MessageModel: ObservableObject {
     
     func fetchData (docId: String) {
         if (user != nil) {
-            db.collection("chats").document(docId).collection("messages").order(by: "sentAt", descending: false).addSnapshotListener({(snapshot, error) in
+            db.collection("chatrooms").document(docId).collection("messages").order(by: "sentAt", descending: false).addSnapshotListener({(snapshot, error) in
                 guard let documents = snapshot?.documents else {
                     print("no documents")
                     return

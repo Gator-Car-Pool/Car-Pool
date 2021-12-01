@@ -15,6 +15,8 @@ struct Point: Identifiable {
     var drawed = false;
     var time_created = ""
     
+    var uid = ""
+    
     mutating func drawedToggle() {
         self.drawed = true;
     }
@@ -40,6 +42,10 @@ struct MainView: View {
     @State var show = false
     @Binding var display : Bool;
     @StateObject var user = User();
+    
+    
+    //Chat Vars
+    @ObservedObject var viewModel = ChatroomModel()
 
     init( display: Binding<Bool> ) {
         self._display = display
@@ -80,12 +86,14 @@ struct MainView: View {
                                 var email = doc.data()["email"]
                                 var time_created = doc.data()["time_created"]
                                 
+                                var uid = doc.data()["uid"]
+                                
                                 print(location, lat, lon);
 
 //                                let annotation = MKPointAnnotation();
                                 let coordinate = CLLocationCoordinate2D(latitude: lat as! CLLocationDegrees, longitude: lon as! CLLocationDegrees)
 //                                annotation.coordinate =
-                                annontations.append(Point(name: location, coordinate: coordinate, email: email as! String, time_created: time_created as! String))
+                                annontations.append(Point(name: location, coordinate: coordinate, email: email as! String, time_created: time_created as! String, uid: uid as! String))
 
                             }
                             print("good")
@@ -501,8 +509,13 @@ struct MainView: View {
                             }
                         
                         }
-                        Text(current.email)
-                            .font(.caption)
+                        Button(action: {
+                            viewModel.createNewChatroom(reciever: current.uid, title: "Test Click", handler: viewModel.fetchData)
+                        }) {
+                            Text(current.email)
+                                .font(.caption)
+                        }
+                        
                         
                         Text("Destination: \(current.name) \nCreated: \(current.time_created)")
                             .font(.footnote)

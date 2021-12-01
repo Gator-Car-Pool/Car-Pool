@@ -27,7 +27,7 @@ class ChatroomModel: ObservableObject{
             print(user!.uid)
             
             
-            db.collection("chats").whereField("users", arrayContains: user!.uid).addSnapshotListener({(snapshot, error) in
+            db.collection("chatrooms").whereField("users.\(user!.uid)", isEqualTo: true).addSnapshotListener({(snapshot, error) in
                 guard let documents = snapshot?.documents else{
                     print("no docs returned")
                     return
@@ -45,7 +45,7 @@ class ChatroomModel: ObservableObject{
     
     func createChatroom(title: String, handler: @escaping () -> Void) {
         if (user != nil) {
-            db.collection("chats").addDocument(data: [
+            db.collection("chatrooms").addDocument(data: [
                                                 "title": title,
                                                 "joinCode": Int.random(in:10000..<99999),
                                                 "users": [user!.uid]]) { err in
@@ -62,17 +62,83 @@ class ChatroomModel: ObservableObject{
     //Creates chatroom with choser user *USE THIS ONE FOR MAP*
     func createNewChatroom(reciever: String, title: String, handler: @escaping () -> Void) {
         if (user != nil) {
-            db.collection("chats").addDocument(data: [
-                                                "title": title,
-                                                "joinCode": Int.random(in:10000..<99999),
-                                                "users": [user!.uid, reciever]]) { err in
-                if let err = err {
-                    print("error adding document! \(err)")
-                }
-                else {
-                    handler()
-                }
-            }
+            //var docRef = db.collection("chats").whereField("users", arrayContains: user!.uid)
+            
+            
+//            //let docRef = db.collection("collection").document("doc")
+//            let docRef = db.collection("chats").whereField("users", arrayContains: [user!.uid, reciever])
+//            docRef.getDocuments { (querysnapshot, error) in
+//                if error != nil {
+//                    print("Document Error: ", error!)
+//                    print("CHAT DOES NOT EXIST")
+//                } else {
+//                    if let doc = querysnapshot?.documents, !doc.isEmpty {
+//                        print("Document is present.")
+//                        print("CHAT EXISTS")
+//                    }
+//                }
+//            }
+            
+//            let docRef = db.collection("chats").whereField("users", arrayContains: [user!.uid, reciever])
+//            print(db.collection("chats").whereField("users", arrayContains: [user!.uid, reciever]))
+            
+//            db.collection("chats").whereField("users", arrayContains: "111").getDocuments() { (snapshot, error) in
+//                if error != nil {
+//                    print("CHAT DOES NOT EXIST")
+//
+//                }
+//                else {
+//                    print("CHAT EXISTS")
+//                }
+//            }
+            
+            db.collection("chatrooms").whereField("users.\(user!.uid)", isEqualTo: true).whereField("users.\(reciever)", isEqualTo: true).getDocuments(completion: { (query, err) in
+                    if let err = err {
+                        print(err.localizedDescription)
+                    }
+                    else {
+                        if let validQuery = query, !validQuery.documents.isEmpty {
+                            print("Chat with \(reciever) already exists...")
+                            }
+                        else {
+                            print("Creating new chat with \(reciever)...")
+                            self.db.collection("chatrooms").addDocument(data: [
+                                                                "title": title,
+                                                                            "users": [self.user!.uid: true, reciever: true]]) { err in
+                                if let err = err {
+                                    print("error adding document! \(err)")
+                                }
+                                else {
+                                    handler()
+                                }
+                            }
+
+                        }
+                    }
+            })
+
+//            docRef.getDocuments { (querysnapshot, error) in
+//                if error != nil {
+//                    print("DOCUMENT DOES NOT EXIST")
+//                } else {
+//                    if let doc = querysnapshot?.documents, !doc.isEmpty {
+//                        print("DOCUMENT EXISTS")
+//                    }
+//                }
+//            }
+            
+            
+//            db.collection("chats").addDocument(data: [
+//                                                "title": title,
+//                                                "joinCode": Int.random(in:10000..<99999),
+//                                                "users": [user!.uid, reciever]]) { err in
+//                if let err = err {
+//                    print("error adding document! \(err)")
+//                }
+//                else {
+//                    handler()
+//                }
+//            }
         }
     }
     
