@@ -10,17 +10,20 @@ struct ContentView : View {
 
     VStack{
 
-        if settings.authentication == false {
-            SignInView().environmentObject(user)
-        }
-    
-    }.onAppear(){
-        if settings.authentication == false {
-            print("false")
-        }
-     else{
-        print("true")
-        }
+        
+        SignInView().environmentObject(user)
+
+//        if settings.authentication == false {
+//            SignInView().environmentObject(user)
+//        }
+//    
+//    }.onAppear(){
+//        if settings.authentication == false {
+//            print("false")
+//        }
+//     else{
+//        print("true")
+//        }
 
     }
 

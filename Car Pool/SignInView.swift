@@ -194,10 +194,17 @@ struct SignInView: View {
         
     // Function for signing up
     private func signUpUser() {
+        
+        if email.suffix(7) != "ufl.edu" {
+            email = ""
+            password = ""
+            print("enter valid ufl email")
+        }
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
             result, err in
 
             if let err = err {
+           
                 print("Failed to create user: ", err)
                 self.signInStatusMessage = "Failed to create user: \(err)"
                 return

@@ -22,10 +22,16 @@ struct Car_PoolApp: App {
     
     var body: some Scene {
         WindowGroup {
+//            if Auth.auth().currentUser != nil {
 //
-//            ContentView()
-//                .environmentObject(user)
-            FloatingTabBar()
+//                   FloatingTabBar();
+//               } else {
+//                   ContentView()
+//                       .environmentObject(user)
+//               }
+            ContentView()
+                .environmentObject(user)
+//            FloatingTabBar()
  
             
 //            ToggleView(show: $show)

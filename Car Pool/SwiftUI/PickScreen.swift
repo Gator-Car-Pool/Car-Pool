@@ -216,8 +216,9 @@ struct PickScreen : View {
         let from = GeoPoint(latitude: self.source.latitude, longitude: self.source.longitude)
         let to = GeoPoint(latitude: self.destination.latitude, longitude: self.destination.longitude)
         let time = getTime()
+        let requests : [String] = [""]
         doc.setData(["name":"User","from":from,"to":to,"distance":self.distance,"fair": (self.distance as NSString).floatValue * 1.2]) { (err) in
-            db.collection("shares").document().setData(["email":FirebaseManager.shared.auth.currentUser?.email ?? "","LocationName":self.name,"Latitude":self.destination.latitude,"Longitude": self.destination.longitude, "time_created":time ] )
+            db.collection("shares").document().setData(["email":FirebaseManager.shared.auth.currentUser?.email ?? "","uid" : FirebaseManager.shared.auth.currentUser?.uid ?? "", "LocationName":self.name,"Latitude":self.destination.latitude,"Longitude": self.destination.longitude, "time_created":time, "requests" : requests] )
 
             if err != nil{
                 

@@ -7,7 +7,7 @@ struct ToggleView : View {
   var body: some View {
 
     ZStack{
-        Capsule().fill(Color.gray).frame(width: 100, height: 45)
+        Capsule().fill(Color.gray.opacity(0.6)).frame(width: 100, height: 45)
         
         
         
@@ -15,18 +15,18 @@ struct ToggleView : View {
             
             if show {
                 Spacer()
-                Text("rider").foregroundColor(.white)
+                Text("driver").foregroundColor(.black)
             }
         ZStack{
             
             
-            Capsule().fill(Color.orange).frame(width: 60, height: 48)
+            Capsule().fill(Color.white).frame(width: 60, height: 48)
             if show {
-            Image("passenger")
+            Image("mode")
                 .resizable()
                 .frame(width: 20, height: 20).foregroundColor(.green)
             } else {
-                Image("mode")
+                Image("passenger")
                     .resizable()
                     .frame(width: 20, height: 20).foregroundColor(.green)
             }
@@ -36,7 +36,7 @@ struct ToggleView : View {
             
             if !show {
               
-                    Text("driver  ").foregroundColor(.white)
+                    Text("rider  ").foregroundColor(.black)
                 Spacer()
             }
         }.frame(width:135, height: 45)    }
