@@ -26,7 +26,7 @@ Allows University of Florida students to carpool with each other. After chatting
 
 **Required Must-have Stories**
 
-* User can sign up/sign in
+* User can sign up/sign in/sign out
 * User can see nearby drivers/riders on mapview and tableview
 * Tableview will update depending on if the user designates themself as a rider or driver
     * Users will see table view cells with profile pictures, username, and the chat button
@@ -35,6 +35,7 @@ Allows University of Florida students to carpool with each other. After chatting
 * After acceptance, drivers will be transferred to a map app and be shown a route to the rider
 * Basic profile page with profile picture (that can be changed), username, and UF email used to sign up
 * Work with at least one map app
+* Settings screen functional
 
 **Optional Nice-to-have Stories**
 
@@ -54,6 +55,8 @@ Allows University of Florida students to carpool with each other. After chatting
     * Where users can change their profile picture
 * Chat screen
     * Where users can chat and request/accept rides, keyboard will have two buttons above it to do so
+* Settings screen
+    * Where users can view their profile, use dark mode, post issues on GitHub, and sign out
 
 ### 3. Navigation
 
