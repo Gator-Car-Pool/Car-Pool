@@ -22,7 +22,11 @@ struct Messages: View {
         VStack {
             List(viewModel.messages) { message in
                 HStack {
-                    Text(message.content)
+                    VStack(alignment: .leading){
+                        Text(message.name)
+                            .font(Font.footnote.weight(.light))
+                        Text(message.content)
+                    }
                     Spacer()
                 }
             }
@@ -36,13 +40,13 @@ struct Messages: View {
                 })
             }
         }
-            .navigationBarTitle(chatroom.title)
+            .navigationBarTitle(chatroom.title[0])
     }
 }
 
 struct Messages_Previews: PreviewProvider {
     
     static var previews: some View {
-        Messages(chatroom: Chatroom(id: "10101", title: "Hello!", joinCode: 10))
+        Messages(chatroom: Chatroom(id: "10101", title: [""], joinCode: 10))
     }
 }

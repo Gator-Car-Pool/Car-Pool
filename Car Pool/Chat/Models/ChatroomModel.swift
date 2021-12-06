@@ -9,7 +9,7 @@ import Firebase
 
 struct Chatroom: Codable, Identifiable{
     var id: String
-    var title: String
+    var title: [String]
     var joinCode: Int
 }
 
@@ -33,11 +33,22 @@ class ChatroomModel: ObservableObject{
                     return
                 }
                 self.chatrooms = documents.map({docSnapshot -> Chatroom in
+                    
+                    
+                    
                     let data = docSnapshot.data()
                     let docId = docSnapshot.documentID
-                    let title = data["title"] as? String ?? ""
+                    var title = data["title"] as! [String]
                     let joinCode = data["joinCode"] as? Int ?? -1
-                    return Chatroom(id: docId, title: title, joinCode: joinCode)
+                    
+                    if(title[0] == self.user?.email){
+                        var temp = title[1]
+                        title[1] = title[0]
+                        title[0] = temp
+                    }
+                    
+                    
+                    return Chatroom(id: docId, title: title as! [String], joinCode: joinCode)
                 })
             })
         }
@@ -60,7 +71,7 @@ class ChatroomModel: ObservableObject{
     }
     
     //Creates chatroom with choser user *USE THIS ONE FOR MAP*
-    func createNewChatroom(reciever: String, title: String, handler: @escaping () -> Void) {
+    func createNewChatroom(reciever: String, title: [String], handler: @escaping () -> Void) {
         if (user != nil) {
             //var docRef = db.collection("chats").whereField("users", arrayContains: user!.uid)
             
@@ -97,13 +108,14 @@ class ChatroomModel: ObservableObject{
                         print(err.localizedDescription)
                     }
                     else {
+                        
                         if let validQuery = query, !validQuery.documents.isEmpty {
                             print("Chat with \(reciever) already exists...")
                             }
                         else {
                             print("Creating new chat with \(reciever)...")
                             self.db.collection("chatrooms").addDocument(data: [
-                                                                "title": title,
+                                                                            "title": title,
                                                                             "users": [self.user!.uid: true, reciever: true]]) { err in
                                 if let err = err {
                                     print("error adding document! \(err)")
