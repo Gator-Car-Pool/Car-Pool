@@ -8,24 +8,11 @@ import SwiftUI
 import FirebaseAuth
 
 struct ChatList: View {
-    //@ObservedObject var viewModel = ChatroomModel()
     @StateObject var viewModel = ChatroomModel()
-    //@State var viewModel = ChatroomModel()
-    //@EnvironmentObject var viewModel = ChatroomModel()
     @State var joinModal = false
     @State var isFirstTime = true
     let user = Auth.auth().currentUser
     var chatTitle = ""
-//    var chatTitle = ""
-//    if(chatroom.title[0] == Auth.auth().currentUser?.email){
-//        chatTitle = chatroom.title[0]
-//    }
-//    else{
-//        chatTitle = chatroom.title[1]
-//    }
-//    init() {
-//        viewModel.fetchData()
-//    }
     
     var body: some View {
         NavigationView{

@@ -517,18 +517,8 @@ struct MainView: View {
                             if let user = user {
                                 currentEmail = user.email!
                             }
-//                            let start = String.Index(encodedOffset: 0)
-//                            var end = String.Index(encodedOffset: currentEmail.count-8)
-//                            var substring = String(currentEmail[start..<end])
-//                            currentEmail = substring
-                            
                             var clickedEmail = current.email
-//                            end = String.Index(encodedOffset: clickedEmail.count-8)
-//                            substring = String(clickedEmail[start..<end])
-//                            clickedEmail = substring
-                            
                             let usersArray = [currentEmail, clickedEmail]
-                            
                             
                             viewModel.createNewChatroom(reciever: current.uid, title: usersArray, handler: viewModel.fetchData)
                         }) {
