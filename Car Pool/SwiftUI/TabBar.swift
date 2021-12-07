@@ -54,7 +54,7 @@ struct FloatingTabBar: View {
                     .environmentObject(showBar)
 
                 
-                ChatView()
+                ChatList()
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("message")
                 

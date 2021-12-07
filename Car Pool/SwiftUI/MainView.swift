@@ -28,6 +28,7 @@ struct MainView: View {
     @State var show = false
     @Binding var display : Bool;
     @StateObject var user = User();
+    @ObservedObject var viewModel = ChatroomModel()
     init( display: Binding<Bool> ) {
         self._display = display
     }
@@ -678,8 +679,24 @@ struct MainView: View {
                                         .font(.system(size: 24, weight: .bold, design: .rounded))
                                 }
                             }
-                            Text(current.email)
-                                .font(.caption)
+                            
+                            Button(action: {
+                                var currentEmail = ""
+                                let user = Auth.auth().currentUser
+                                if let user = user {
+                                    currentEmail = user.email!
+                                }
+                                let clickedEmail = current.email
+                                let usersArray = [currentEmail, clickedEmail]
+                                
+                                print(clickedEmail)
+                                print(currentEmail)
+                                
+                                viewModel.createNewChatroom(reciever: current.id, title: usersArray, handler: viewModel.fetchData)
+                            }) {
+                                Text(current.email)
+                                    .font(.caption)
+                            }
                             
                             Text("Destination: \(current.name) \nCreated: \(current.time_created)")
                                 .font(.footnote)

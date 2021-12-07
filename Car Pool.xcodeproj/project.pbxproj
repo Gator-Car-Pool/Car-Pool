@@ -39,6 +39,11 @@
 		27F66439274C43A0001A860D /* backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F66438274C43A0001A860D /* backup.swift */; };
 		27F6643B274C4C0F001A860D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F6643A274C4C0F001A860D /* LocationManager.swift */; };
 		27F6643D274C4D12001A860D /* MKCoordinateRegion+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F6643C274C4D12001A860D /* MKCoordinateRegion+Extensions.swift */; };
+		2D584E22275EE60A00367C3E /* ChatroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D584E21275EE60A00367C3E /* ChatroomModel.swift */; };
+		2D584E24275EE62900367C3E /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D584E23275EE62900367C3E /* MessageModel.swift */; };
+		2D584E26275EE64500367C3E /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D584E25275EE64500367C3E /* SessionModel.swift */; };
+		2D584E28275EE68000367C3E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D584E27275EE68000367C3E /* ChatList.swift */; };
+		2D584E2A275EE6A600367C3E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D584E29275EE6A600367C3E /* Messages.swift */; };
 		3E1E42FBE74D9B1E24F4A1AA /* Pods_Car_Pool_Car_PoolUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABAEAA97C932F5C9FAFA6E6A /* Pods_Car_Pool_Car_PoolUITests.framework */; };
 		77112206273C53D1007C42ED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77112205273C53D1007C42ED /* ImagePicker.swift */; };
 		77C784BA273B519C00120F48 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784B9273B519C00120F48 /* SignInView.swift */; };
@@ -106,6 +111,11 @@
 		27F6643A274C4C0F001A860D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		27F6643C274C4D12001A860D /* MKCoordinateRegion+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKCoordinateRegion+Extensions.swift"; sourceTree = "<group>"; };
 		2CFB2E07636F9477D5349367 /* Pods-Car Pool-Car PoolUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool-Car PoolUITests.debug.xcconfig"; path = "Target Support Files/Pods-Car Pool-Car PoolUITests/Pods-Car Pool-Car PoolUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D584E21275EE60A00367C3E /* ChatroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomModel.swift; sourceTree = "<group>"; };
+		2D584E23275EE62900367C3E /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		2D584E25275EE64500367C3E /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
+		2D584E27275EE68000367C3E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		2D584E29275EE6A600367C3E /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		726CC7EC0BD02A4823EFC99B /* Pods-Car Pool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Car Pool.debug.xcconfig"; path = "Target Support Files/Pods-Car Pool/Pods-Car Pool.debug.xcconfig"; sourceTree = "<group>"; };
 		77112205273C53D1007C42ED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		77C784B9273B519C00120F48 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -173,6 +183,7 @@
 		27C8A6CB27333CE000BE3398 /* Car Pool */ = {
 			isa = PBXGroup;
 			children = (
+				2D584E1E275EE5B200367C3E /* Chat */,
 				27D9F8DB274B4FCC00313977 /* Car_PoolApp.swift */,
 				27689724274EBA8B005D1619 /* User.swift */,
 				27ACA51E274C0F2D006416D4 /* GoogleService-Info.plist */,
@@ -253,6 +264,34 @@
 				275BB0D52755AC0A00859203 /* RequestedRide.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		2D584E1E275EE5B200367C3E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2D584E20275EE5C400367C3E /* Models */,
+				2D584E1F275EE5B800367C3E /* Screens */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		2D584E1F275EE5B800367C3E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2D584E27275EE68000367C3E /* ChatList.swift */,
+				2D584E29275EE6A600367C3E /* Messages.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2D584E20275EE5C400367C3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D584E21275EE60A00367C3E /* ChatroomModel.swift */,
+				2D584E23275EE62900367C3E /* MessageModel.swift */,
+				2D584E25275EE64500367C3E /* SessionModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		58654F93E724362BF4E22362 /* Frameworks */ = {
@@ -517,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D9F8ED274B4FDC00313977 /* SearchView.swift in Sources */,
+				2D584E2A275EE6A600367C3E /* Messages.swift in Sources */,
 				27689723274DE5C2005D1619 /* ContentView.swift in Sources */,
 				27F6643B274C4C0F001A860D /* LocationManager.swift in Sources */,
 				27D9F8F3274B4FDC00313977 /* BookedView.swift in Sources */,
@@ -526,6 +566,7 @@
 				77C784BE273B522200120F48 /* ChatView.swift in Sources */,
 				27681C572750C5C900D3AE94 /* Toggle.swift in Sources */,
 				27ADCB8A274D625F00A383F9 /* UserProfileView.swift in Sources */,
+				2D584E28275EE68000367C3E /* ChatList.swift in Sources */,
 				27ADCB88274CB86700A383F9 /* CardView.swift in Sources */,
 				27F6643D274C4D12001A860D /* MKCoordinateRegion+Extensions.swift in Sources */,
 				77C784BA273B519C00120F48 /* SignInView.swift in Sources */,
@@ -535,6 +576,7 @@
 				27689721274DE2E8005D1619 /* AuthView.swift in Sources */,
 				27ADCB86274C9A6600A383F9 /* backup2.swift in Sources */,
 				27D9F8F4274B4FDC00313977 /* MainView.swift in Sources */,
+				2D584E24275EE62900367C3E /* MessageModel.swift in Sources */,
 				27D9F8F1274B4FDC00313977 /* Loader.swift in Sources */,
 				27689727274F17CE005D1619 /* DetailView.swift in Sources */,
 				275BB0D62755AC0A00859203 /* RequestedRide.swift in Sources */,
@@ -544,8 +586,10 @@
 				272D12E32750A13A0003A0DE /* TabBar.swift in Sources */,
 				2768971D274DD8B5005D1619 /* FirebaseManager.swift in Sources */,
 				27D9F8F0274B4FDC00313977 /* TabBarView.swift in Sources */,
+				2D584E22275EE60A00367C3E /* ChatroomModel.swift in Sources */,
 				275BB0D42754016E00859203 /* Point.swift in Sources */,
 				27689725274EBA8B005D1619 /* User.swift in Sources */,
+				2D584E26275EE64500367C3E /* SessionModel.swift in Sources */,
 				27D9F8E0274B4FD600313977 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,6 @@ struct Point: Identifiable {
     var time_created = ""
     var isUser : Bool;
     var list: [String] = [""]
-
 }
 
 
