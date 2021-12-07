@@ -31,7 +31,6 @@ struct FloatingTabBar: View {
     @EnvironmentObject var bar : Bar;
     @StateObject var showBar = Bar()
 
-
     var tabs = ["map", "message", "settings"]
     
     @State var selectedTab = "map"
@@ -42,7 +41,6 @@ struct FloatingTabBar: View {
     
     init() {
         UITabBar.appearance().isHidden = true
-        
     }
     
     var body: some View {
@@ -52,18 +50,15 @@ struct FloatingTabBar: View {
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("map")
                     .environmentObject(showBar)
-
                 
                 ChatList()
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("message")
                 
-                
                 SettingsView(darkModeEnabled: $darkModeEnabled,
                              systemThemeEnabled: $systemThemeEnabled)
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("settings")
-                
       
             }    .onAppear {
                 SystemThemeManager
@@ -80,7 +75,6 @@ struct FloatingTabBar: View {
                         Button(action: {
                             withAnimation {
                                 selectedTab = image
-//                                xAxis = reader.frame(in: .global).minX
                             }
                         }, label: {
                             Image(image)
@@ -95,7 +89,6 @@ struct FloatingTabBar: View {
                         })
                         .onAppear(perform: {
                             if image == tabs.first {
-//                                xAxis = reader.frame(in: .global).minX
                             }
                         })
                     }
@@ -110,46 +103,8 @@ struct FloatingTabBar: View {
             
             // Bottom edge....
             .padding(.bottom , UIApplication.shared.windows.first?.safeAreaInsets.bottom)
-        
         }
         }
-      
         .ignoresSafeArea(.all, edges: .all)
     }
 }
-
-//
-//struct CustomShape: Shape {
-//
-//    var xAxis: CGFloat
-//
-//    // Animate Path
-//    var animatableData: CGFloat {
-//        get { return xAxis }
-//        set { xAxis = newValue }
-//    }
-//
-//    func path(in rect: CGRect) -> Path {
-//        return Path { path in
-//            path.move(to: CGPoint(x: 0, y: 0))
-//            path.addLine(to: CGPoint(x: rect.width, y: 0))
-//            path.addLine(to: CGPoint(x: rect.width, y: rect.height))
-//            path.addLine(to: CGPoint(x: 0, y: rect.height))
-//
-//            let center = xAxis
-//
-//            path.move(to: CGPoint(x: center - 50, y: 0))
-//
-//            let to1 = CGPoint(x: center, y: 35)
-//            let control1 = CGPoint(x: center - 25, y: 0)
-//            let control2 = CGPoint(x: center - 25, y: 35)
-//
-//            let to2 = CGPoint(x: center + 50, y: 0)
-//            let control3 = CGPoint(x: center + 25, y: 35)
-//            let control4 = CGPoint(x: center + 25, y: 0)
-//
-//            path.addCurve(to: to1, control1: control1, control2: control2)
-//            path.addCurve(to: to2, control1: control3, control2: control4)
-//        }
-//    }
-//}

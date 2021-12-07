@@ -44,4 +44,3 @@ struct AnimatedBlobView_Previews: PreviewProvider {
         AnimatedBlobView()
     }
 }
-

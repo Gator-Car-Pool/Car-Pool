@@ -38,8 +38,6 @@ struct PickScreen : View {
 
         let dateString = formatter.string(from: Date())
         return dateString
-          
-        
    }
     
     var btnBack : some View { Button(action: {
@@ -53,7 +51,6 @@ struct PickScreen : View {
     
     var body: some View{
         
-
         ZStack{
             
             ZStack(alignment: .bottom){
@@ -72,19 +69,12 @@ struct PickScreen : View {
                                     .fontWeight(.bold)
                             }
                         }
-                        
-                        
-
                     }
                     .padding()
                     .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                     .background(Color.white)
                     
-                    
-
                     MapView(map: self.$map, manager: self.$manager, alert: self.$alert, source: self.$source, destination: self.$destination, name: self.$name,distance: self.$distance,time: self.$time, show: self.$show)
-                    
-                    
                     
                 }
                 
@@ -93,8 +83,6 @@ struct PickScreen : View {
                     ZStack(alignment: .topTrailing){
                         
                         VStack(spacing: 20){
-                            
-
                          
                             HStack{
                                 
@@ -115,7 +103,6 @@ struct PickScreen : View {
                             Button(action: {
                                 
                                 self.loading.toggle()
-                                
                                 self.Book()
                                 
                             }) {
@@ -128,8 +115,6 @@ struct PickScreen : View {
                             .background(Color.blue)
                             .clipShape(Capsule())
                             .padding(.vertical, 50)
-
-                        
                         }
                         
                         Button(action: {
@@ -137,11 +122,9 @@ struct PickScreen : View {
                             self.map.removeOverlays(self.map.overlays)
                             self.map.removeAnnotations(self.map.annotations)
                             self.destination = nil
-                            
                             self.show.toggle()
                             
                         }) {
-                            
                             Image(systemName: "xmark")
                                 .foregroundColor(.black)
                         }
@@ -151,20 +134,16 @@ struct PickScreen : View {
                     .padding(.bottom, UIApplication.shared.windows.first?.safeAreaInsets.bottom)
                     .background(Color.white)
                     
-                    
                 } else {
                     
                     Button(action: {
                         self.search.toggle()
 
                     }) {
-                        
                         HStack{
                             Image("search")
                                 .resizable()
                                 .frame(width: 20, height:20)
-
-                            
                         }
                         .padding()
                         
@@ -197,14 +176,9 @@ struct PickScreen : View {
             
             Alert(title: Text("Error"), message: Text("Please Enable Location In Settings"), dismissButton: .destructive(Text("Ok")))
             
-            
-        
         }
         .navigationBarBackButtonHidden(true)
-           .navigationBarItems(leading: btnBack)
-        
-
-        
+        .navigationBarItems(leading: btnBack)
     }
     
     func Book(){
@@ -225,15 +199,6 @@ struct PickScreen : View {
                 print((err?.localizedDescription)!)
                 return
             }
-            
-            
-//            let filter = CIFilter(name: "CIQRCodeGenerator")
-//            filter?.setValue(self.doc.data(using: .ascii), forKey: "inputMessage")
-//
-//            let image = UIImage(ciImage: (filter?.outputImage?.transformed(by: CGAffineTransform(scaleX: 5, y: 5)))!)
-//
-//            self.data = image.pngData()!
-            
             
             self.loading.toggle()
             self.book.toggle()

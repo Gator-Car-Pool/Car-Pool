@@ -11,6 +11,4 @@ class User: ObservableObject {
     @Published var profile_pic = Image("gator")
     @Published var email = "n/a"
     @Published var mode = "rider"
-
 }
-

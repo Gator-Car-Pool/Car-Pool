@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct SettingsView: View {
-    //    @Environment(\.presentationMode) var presentationMode
-    //    @AppStorage("isLogged") var isLogged = false
-    //    @AppStorage("isLiteMode") var isLiteMode = false
-    
     @Binding var darkModeEnabled: Bool
     @Binding var systemThemeEnabled: Bool
+    let user = Auth.auth().currentUser
+
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -41,20 +40,8 @@ struct SettingsView: View {
                     })
 
                 }
-                //.navigationBarBackButtonHidden(false)
                 .listRowSeparator(.automatic)
-                
-//                Toggle(isOn: $darkModeEnabled,
-//                       label: {
-//                    Text("Dark mode")
-//                })
-//                    .onChange(of: darkModeEnabled,
-//                              perform: {_ in
-//                        SystemThemeManager
-//                            .shared
-//                            .handleTheme(darkMode: darkModeEnabled, system: systemThemeEnabled)
-//                    })
-                
+    
                 links
                 
                 // Sign out button
@@ -75,7 +62,6 @@ struct SettingsView: View {
                         .foregroundStyle(.linearGradient(colors: [.blue, .green, .orange], startPoint: .topLeading, endPoint: .topTrailing))
                     HStack {
                         Label("Version", systemImage: "info.circle.fill")
-//                        Spacer()
                         Text("1.0")
                     }
                 }
@@ -112,11 +98,8 @@ struct SettingsView: View {
                 .padding()
                 .background(Circle().fill(.ultraThinMaterial))
                 .background(AnimatedBlobView().frame(width: 500, height: 600).offset(x: 0)).scaleEffect(1)
-            // Just a placeholder
-            // Should be user's display name that was chosen at sign up
-            Text("Kanye West")
+            Text((user?.email)!)
                 .font(.title.weight(.semibold))
-            //.foregroundStyle(.linearGradient(colors: [.blue, .orange], startPoint: .topLeading, endPoint: .topTrailing))
                 .foregroundColor(.primary)
                 .lineLimit(1)
             Text("University Of Florida")
@@ -138,10 +121,8 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        //        SettingsView()
+        // SettingsView()
         SettingsView(darkModeEnabled: .constant(false),
                      systemThemeEnabled: .constant(false))
-        
-        
     }
 }

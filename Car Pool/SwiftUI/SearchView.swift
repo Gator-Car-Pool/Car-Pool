@@ -33,8 +33,6 @@ struct SearchView: View {
                     .padding(.vertical, 150)
                     .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
 
-                    
-
                 if self.txt != ""{
                     
                     List(self.result){i in
@@ -195,12 +193,10 @@ struct SearchBar : UIViewRepresentable {
             }
         }
     }
-
 }
 
 
 struct SearchData : Identifiable {
-    
     var id : Int
     var name : String
     var address : String

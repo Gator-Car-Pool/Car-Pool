@@ -4,6 +4,7 @@
 //
 //  Created by Jesus Jurado on 11/15/21.
 //
+
 import Foundation
 import FirebaseAuth
 
@@ -11,7 +12,6 @@ struct ChatUser {
     var uid: String
     var email: String
 }
-
 
 class SessionModel: ObservableObject {
     @Published var session: ChatUser?

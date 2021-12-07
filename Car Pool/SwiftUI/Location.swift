@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 
-
 struct Location {
     var name: String = UUID().uuidString
     var latitude: Double = 0.00;

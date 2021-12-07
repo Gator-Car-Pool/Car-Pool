@@ -10,11 +10,8 @@ import Firebase
 struct MainView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var showBar = Bar();
-    
     @ObservedObject private var locationManager = LocationManager()
-    
     @State private var region = MKCoordinateRegion.defaultRegion
-    
     @State var count = 0;
     @State private var cancellable: AnyCancellable?
     @State var selection: Int? = nil
@@ -29,38 +26,27 @@ struct MainView: View {
     @Binding var display : Bool;
     @StateObject var user = User();
     @ObservedObject var viewModel = ChatroomModel()
+    
     init( display: Binding<Bool> ) {
         self._display = display
     }
     private func setCurrentLocation() {
         cancellable = locationManager.$location.sink { location in
             region = MKCoordinateRegion(center: location?.coordinate ?? CLLocationCoordinate2D(), latitudinalMeters: 2500, longitudinalMeters: 2500)
-            
-            
         }
-        
     }
-    
-    
-    
-    
     
     @State var index = 0
     @State var showUserProfile = false;
     @State var showOtherUserProfile = false;
-    
     @State var showDetails1 = false;
-    
     @State var showDetails = false;
     @State var annontations: [Point] = [    Point(id: "", name: "test" , coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00), email: "", isUser: false)]
     @State var requestedRides: [Point] = [    Point(id: "", name: "test" , coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00), email: "", isUser: false)]
-    
     @State var UserRideRequests: [String] = [""]
     @State var current = Point(id: "", name: "n/a", coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00), email: "", isUser: false)
     @State var showRides = false;
     @State var showLocationPicker = false;
-    
-    
     
     func fetchData() {
         annontations.removeAll()
@@ -81,20 +67,16 @@ struct MainView: View {
                         if FirebaseManager.shared.auth.currentUser?.uid as? String == id as! String {
                             isUser = false;
                         }
-                        
                         let coordinate = CLLocationCoordinate2D(latitude: lat as! CLLocationDegrees, longitude: lon as! CLLocationDegrees)
                         annontations.append(Point(id: id as! String, name: location, coordinate: coordinate, email: email as! String, time_created: time_created as! String, isUser: isUser, list: list as! [String]))
-                        
                     }
-                    print("good")
+                    print("Good")
                 }
             }
             else {
-                
+                print("Not good")
             }
         }
-        
-        
     }
     
     func fetchUserData(){
@@ -104,9 +86,7 @@ struct MainView: View {
                 if let snapshot = snapshot {
                     for doc in snapshot.documents{
                         if doc.data()["uid"] as? String == FirebaseManager.shared.auth.currentUser?.uid as? String {
-                            
                             self.profile_pic =  (doc.data()["profilePicUrl"] as? String)!
-                            
                         }
                     }
                 }
@@ -114,121 +94,39 @@ struct MainView: View {
                     
                 }
             }
-            
         }
     }
     
-    
     func postUpdate(curr: Point, action: String) {
-        
-        //
-        //
-        //        let db = Firestore.firestore()
-        //        var docid = ""
-        //
-        //        db.collection("shares").getDocuments() { snapshot, error in
-        //            if error == nil {
-        //                if let snapshot = snapshot {
-        //                    for doc in snapshot.documents{
-        //                        if doc.data()["uid"] as? String == curr.id {
-        //
-        //                            var docid = doc.documentID ?? ""
-        //                            print("document")
-        //                            print(docid)
-        //                    }
-        //                }
-        //            }
-        //            else {
-        //
-        //            }
-        //        }
-        //
-        //        }
-        
-        
-        
-        //        let usersReq = db.collection("shares").document(docid)
-        //
-        //        // Set the "capital" field of the city 'DC'
-        //        usersReq.updateData([
-        //            "capital": true
-        //        ]) { err in
-        //            if let err = err {
-        //                print("Error updating document: \(err)")
-        //            } else {
-        //                print("Document successfully updated")
-        //            }
-        //        }
-        
-        
-        
-        
-        //        UserRideRequests = curr.list
-        //        if (action == "add") {
-        //            UserRideRequests.append(uid)
-        //        }
-        //        else if (action == "delete") {
-        //
-        //            if let index = UserRideRequests.firstIndex(of: uid) {
-        //                UserRideRequests.remove(at: index)
-        //            } else {
-        //                // not found
-        //            }
-        //
-        //        }
-        //        else {
-        //
-        //        }
-        //
-        //        docRef.updateData(["requests": UserRideRequests ]) { error in
-        //                if let error = error {
-        //                    print("Error updating document: \(error)")
-        //                } else {
-        //                    print("Document successfully updated!")
-        //                }
-        //        }
-        
+
     }
-    
-    
-    
-    
     
     func addOverlay(_ overlay: MKOverlay) -> some View {
         MKMapView.appearance().addOverlay(overlay)
         return self
     }
     
-    
     var body: some View {
         
-        
         NavigationView {
+            
             ZStack {
                 
-                
-                
                 VStack {
-                    
                     
                     if locationManager.location != nil {
                         
                         Map(coordinateRegion: $region, interactionModes: .all, showsUserLocation: true, userTrackingMode: nil, annotationItems: annontations ) {
                             point in MapAnnotation(coordinate: point.coordinate) {
                                 
-                                
-                                
-                                
-                                
                                 Button(action: {
                                     self.showDetails.toggle()
-                                    
                                     current = point
-                                    
                                     
                                 }) {
                                     
                                     HStack {
+                                        
                                         Image("gator")
                                             .cornerRadius(40)
                                         if FirebaseManager.shared.auth.currentUser?.uid as? String != point.id {
@@ -236,7 +134,6 @@ struct MainView: View {
                                                 .fixedSize()
                                         }
                                     }
-                                    
                                 }
                                 .padding(10)
                                 .background(Color.white)
@@ -248,30 +145,13 @@ struct MainView: View {
                                         .foregroundColor(.white)
                                         .offset(y: 10)
                                     , alignment: .bottom)
-                                
-                                
-                                
-                                //
-                                
-                                
-                                
-                                
-                                
                             }
-                        
-                        
-                        
                         }
-                        
-                        //                Map(coordinateRegion: $region,annotationItems interactionModes: .all, showsUserLocation: true, userTrackingMode: nil)
                     } else {
                         Text("Locating user location...")
                     }
-                    
-                    
-                }            .edgesIgnoringSafeArea(.all)
-                
-                
+                }
+                .edgesIgnoringSafeArea(.all)
                 .onAppear {
                     
                     fetchUserData()
@@ -281,13 +161,10 @@ struct MainView: View {
                     }
                     firstAppear = false;
                     
-                }       .onAppear {
-                    
-                    
+                }
+                .onAppear {
                 }
                 .navigationBarHidden(true)
-                
-                
                 
                 if showUserProfile {
                     VStack{
@@ -298,10 +175,7 @@ struct MainView: View {
                                 self.showUserProfile = false;
                                 self.isVisible.toggle()
                                 display.toggle()
-                                
-                                
                             }) {
-                                
                                 Image(systemName: "chevron.left")
                                     .font(.system(size: 22))
                                     .foregroundColor(.black)
@@ -345,10 +219,7 @@ struct MainView: View {
                                     .frame(width: 80, height: 3)
                                     .zIndex(1)
                                 
-                                
-                                
                                 let imageUrl = URL(string: profile_pic)!
-                                
                                 let imageData = try! Data(contentsOf: imageUrl)
                                 let image = UIImage(data: imageData)
                                 
@@ -388,16 +259,12 @@ struct MainView: View {
                         
                         HStack{
                             
-                            
-                            
                             Text("Rides History")
                                 .foregroundColor(self.index == 0 ? Color.white : .gray)
                                 .padding(.vertical, 10)
                                 .padding(.horizontal)
                                 .background(self.index == 0 ? Color("Color") : Color.clear)
                                 .cornerRadius(10)
-                            
-                            
                             
                         }
                         .padding(.horizontal,8)
@@ -430,21 +297,11 @@ struct MainView: View {
                         }
                         .padding(.vertical, 10)
                         HStack(spacing: 20){
-                            
-                            
-                            
-                            
-                            
                         }
                         Spacer(minLength: 0)
                     }
                     .background(Color("Color1").edgesIgnoringSafeArea(.all))
-                    
-                    
-                    
-                    
                 }
-                
                 
                 if showRides {
                     
@@ -459,7 +316,6 @@ struct MainView: View {
                                     display.toggle()
                                     
                                 }) {
-                                    
                              
                                     HStack {
                                         Image(systemName: "chevron.left")
@@ -471,8 +327,6 @@ struct MainView: View {
                                     }
                                 }
                            
-                               
-                                
                                 Spacer(minLength: 0)
                                 
                                 Button(action: {
@@ -487,20 +341,16 @@ struct MainView: View {
                                         .background(Color("Color"))
                                         .cornerRadius(10)
                                 }
-                                
                             }
-                            
                             .padding(50)
+                            
                             HStack{
-                                
                                 
                                 VStack(alignment: .leading, spacing: 12){
                                     
                                     Text("Available Rides")
                                         .font(.title)
                                         .foregroundColor(Color.black.opacity(0.8))
-                                    
-                                    
                                 }
                                 .padding(.leading, 20)
                                 
@@ -564,8 +414,8 @@ struct MainView: View {
                                 }
                                 
                             }
-                            
                             .padding(50)
+                            
                             HStack{
                                 
                                 
@@ -574,7 +424,6 @@ struct MainView: View {
                                     Text("Pending Requests")
                                         .font(.title)
                                         .foregroundColor(Color.black.opacity(0.8))
-                                    
                                     
                                 }
                                 .padding(.leading, 20)
@@ -601,21 +450,12 @@ struct MainView: View {
                                             .font(.headline)
                                         
                                     }.padding(7);
-                                    
                                 }
                             }
                         }
                         .background(Color("Color1").edgesIgnoringSafeArea(.all))
-                        
-                        
                     }
-                    
-                    
-                    
-                    
                 }
-                
-                
                 
                 if showLocationPicker {
                     if self.count == 0 {
@@ -629,20 +469,11 @@ struct MainView: View {
                         .simultaneousGesture(TapGesture().onEnded{
                             self.showLocationPicker.toggle();
                             self.pushActive.toggle();
-                            
-                            
                         })
                     }
-                    
-                    
-                    
                 }
                 
-                
                 if showDetails {
-                    
-                    
-                    
                     
                     ZStack(alignment: .topLeading) {
                         Color.white.opacity(0.8)
@@ -731,7 +562,6 @@ struct MainView: View {
                             
                             
                             Button(action: {
-                                
                                 
                                 self.showDetails.toggle()
                                 
@@ -830,20 +660,9 @@ struct MainView: View {
                             .padding()
                             .frame(width: 300, height: 400)
                             .foregroundColor(Color.black.opacity(0.8))
-                            
                         }
-                        
                     }
-                    
-                    
                 }
-                
-                
-                
-                
-                
-                
-                
                 
                 Button(action: {
                     print("See Driver list")
@@ -860,7 +679,6 @@ struct MainView: View {
                         
                     }
                     .padding()
-                    
                     .background(Color.white)
                     .cornerRadius(40)
                     .frame(height: isVisible ? nil : 0)
@@ -869,30 +687,23 @@ struct MainView: View {
                 }
                 .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.1)
                 
-                
                 Button(action: {
                     print("go to user profile")
                     self.showUserProfile = true;
                     self.isVisible.toggle()
                     display.toggle()
-                    
-                    //
-                    
                 }) {
                     
                     HStack{
                         Image("user")
                             .resizable()
                             .frame(width: 20, height:20)
-                        
                     }
                     .padding()
-                    
                     .background(Color.white)
                     .cornerRadius(40)
                     .frame(height: isVisible ? nil : 0)
                     .disabled(!isVisible)
-                    
                 }
                 .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.2)
                 
@@ -906,21 +717,14 @@ struct MainView: View {
                         Image("refresh")
                             .resizable()
                             .frame(width: 20, height:20)
-                        
-                        
                     }
                     .padding()
-                    
                     .background(Color.white)
                     .cornerRadius(40)
                     .frame(height: isVisible ? nil : 0)
                     .disabled(!isVisible)
-                    
                 }
                 .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.3)
-                
-                //fix nav link
-                
                 
                 Button(action: {
                     print("Pick location")
@@ -933,10 +737,8 @@ struct MainView: View {
                         }
                     }
                     
-                    
                     if self.show {
                         self.showLocationPicker = true;
-                        
                         
                         if firstLocationAction {
                             self.pushActive = true;
@@ -948,12 +750,7 @@ struct MainView: View {
                             self.fetchData()
                             
                         }
-                        
-                        
-                        
                     }
-                    
-                    
                 }) {
                     
                     HStack{
@@ -963,12 +760,8 @@ struct MainView: View {
                             .cornerRadius(40)
                             .frame(height: isVisible ? nil : 0)
                             .disabled(!isVisible)
-                        
-                        
                     }
                     .cornerRadius(40)
-                    
-                    
                 }
                 .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.4)
                 
@@ -983,32 +776,23 @@ struct MainView: View {
                         Image("target")
                             .resizable()
                             .frame(width: 20, height:20)
-                        
-                        
                     }
                     .padding()
-                    
                     .background(Color.white)
                     .cornerRadius(40)
                     .frame(height: isVisible ? nil : 0)
                     .disabled(!isVisible)
-                    
-                    
                 }
                 .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.8)
             }
             .edgesIgnoringSafeArea(.all)
             NavigationLink(destination: PickScreen(), isActive: self.$toPickScreen){
             }.disabled(true)
-            
-            
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarHidden(true)
-        
     }
 }
-
 
 
 struct RidesDetailView: View {
@@ -1019,7 +803,6 @@ struct RidesDetailView: View {
         VStack() {
             
             // Meditation Image
-            
             Text("Ride details")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -1029,6 +812,7 @@ struct RidesDetailView: View {
                 
                 .padding(10)
                 .padding(.vertical, 10)
+            
             // Title
             Text(current.name)
                 .font(.largeTitle)
@@ -1039,7 +823,6 @@ struct RidesDetailView: View {
             
             // GeometryReader for button width
             
-            
             // Button stack
             Button(action: {}) {
                 Text("Request to Ride")
@@ -1049,16 +832,10 @@ struct RidesDetailView: View {
                     .clipShape(Capsule())
             }
             .padding(.vertical,    100)
-            
-            
-            
-            
-            
         }
         .padding()
     }
 }
-
 
 
 struct RidesRequestView: View {
@@ -1069,7 +846,6 @@ struct RidesRequestView: View {
         VStack() {
             
             // Meditation Image
-            
             Text("User Name")
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -1079,16 +855,13 @@ struct RidesRequestView: View {
                 
                 .padding(10)
                 .padding(.vertical, 10)
+            
             // Title
             Text("Wants to join your ride")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
-            // Description
-            //            Text("This request was made at \(current.time_created).")
-            
             // GeometryReader for button width
-            
             
             // Button stack
             HStack {
@@ -1101,7 +874,6 @@ struct RidesRequestView: View {
                 }
                 .padding(.vertical,    100)
                 
-                
                 Button(action: {}) {
                     Text("Declne")
                         .padding()
@@ -1111,10 +883,7 @@ struct RidesRequestView: View {
                 }
                 .padding(.vertical,    100)
                 
-                
             }
-            
-            
         }
         .padding()
     }

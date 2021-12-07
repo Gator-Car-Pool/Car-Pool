@@ -9,11 +9,8 @@ import Firebase
 
 @main
 
-
-
 struct Car_PoolApp: App {
     
-
     @StateObject var user = User();
     @State var show = false;
     init() {
@@ -21,21 +18,11 @@ struct Car_PoolApp: App {
     }
     
     var body: some Scene {
-        WindowGroup {
-//            if Auth.auth().currentUser != nil {
-//
-//                   FloatingTabBar();
-//               } else {
-//                   ContentView()
-//                       .environmentObject(user)
-//               }
-            ContentView()
-                .environmentObject(user)
-//            FloatingTabBar()
- 
-            
-//            ToggleView(show: $show)
-    }
-    
+            WindowGroup {
+
+                ContentView()
+                    .environmentObject(user)
+
+        }
     }
 }

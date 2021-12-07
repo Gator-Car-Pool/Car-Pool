@@ -26,7 +26,6 @@ struct Booked : View {
                         .padding(.vertical,25)
                         .frame(width: UIScreen.main.bounds.width / 4)
 
-
                 Button(action: {
                     
                     self.loading.toggle()
@@ -55,7 +54,6 @@ struct Booked : View {
                 }
                 .background(Color.red)
                 .clipShape(Capsule())
-
             }
             .background(Color.white)
             .cornerRadius(12)

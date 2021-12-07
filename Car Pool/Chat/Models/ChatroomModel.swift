@@ -4,6 +4,7 @@
 //
 //  Created by Jesus Jurado on 11/22/21.
 //
+
 import Foundation
 import Firebase
 
@@ -50,22 +51,6 @@ class ChatroomModel: ObservableObject{
         }
     }
     
-//    func createChatroom(title: String, handler: @escaping () -> Void) {
-//        if (user != nil) {
-//            db.collection("chatrooms").addDocument(data: [
-//                                                "title": title,
-//                                                "joinCode": Int.random(in:10000..<99999),
-//                                                "users": [user!.uid]]) { err in
-//                if let err = err {
-//                    print("error adding document! \(err)")
-//                }
-//                else {
-//                    handler()
-//                }
-//            }
-//        }
-//    }
-    
     //Creates chatroom with choser user *USE THIS ONE FOR MAP*
     func createNewChatroom(reciever: String, title: [String], handler: @escaping () -> Void) {
         if (user != nil) {
@@ -90,28 +75,9 @@ class ChatroomModel: ObservableObject{
                                     handler()
                                 }
                             }
-
                         }
                     }
             })
         }
     }
-    
-//    func joinChatroom(code: String, handler: @escaping () -> Void) {
-//        if (user != nil) {
-//            db.collection("chats").whereField("joinCode", isEqualTo: Int(code)).getDocuments() { (snapshot, error) in
-//                if let error = error {
-//                    print("error getting documents! \(error)")
-//
-//                }
-//                else {
-//                    for document in snapshot!.documents {
-//                        self.db.collection("chats").document(document.documentID).updateData([
-//                                                                                                "users": FieldValue.arrayUnion([self.user!.uid])])
-//                        handler()
-//                    }
-//                }
-//            }
-//        }
-//    }
 }

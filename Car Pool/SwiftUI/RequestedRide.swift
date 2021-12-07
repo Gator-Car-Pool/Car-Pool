@@ -3,8 +3,6 @@ import MapKit
 import Combine
 import Firebase
 
-
-
 struct RequestedRide: Identifiable {
 
     var sender = ""

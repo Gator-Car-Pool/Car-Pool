@@ -3,8 +3,6 @@ import MapKit
 import Combine
 import Firebase
 
-
-
 struct Point: Identifiable {
     let id : String
     let name : String

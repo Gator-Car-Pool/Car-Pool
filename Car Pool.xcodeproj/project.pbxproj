@@ -31,7 +31,6 @@
 		27D9F8EC274B4FDC00313977 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8E3274B4FDC00313977 /* Location.swift */; };
 		27D9F8ED274B4FDC00313977 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8E4274B4FDC00313977 /* SearchView.swift */; };
 		27D9F8EE274B4FDC00313977 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8E5274B4FDC00313977 /* MapView.swift */; };
-		27D9F8F0274B4FDC00313977 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8E7274B4FDC00313977 /* TabBarView.swift */; };
 		27D9F8F1274B4FDC00313977 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8E8274B4FDC00313977 /* Loader.swift */; };
 		27D9F8F2274B4FDC00313977 /* PickScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8E9274B4FDC00313977 /* PickScreen.swift */; };
 		27D9F8F3274B4FDC00313977 /* BookedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D9F8EA274B4FDC00313977 /* BookedView.swift */; };
@@ -49,7 +48,6 @@
 		7758099A275EF33400735CE6 /* AnimatedBlobView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77580999275EF33400735CE6 /* AnimatedBlobView.swift.swift */; };
 		7758099C275EF41600735CE6 /* UserProfileViewV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7758099B275EF41600735CE6 /* UserProfileViewV2.swift */; };
 		77C784BA273B519C00120F48 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784B9273B519C00120F48 /* SignInView.swift */; };
-		77C784BE273B522200120F48 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784BD273B522200120F48 /* ChatView.swift */; };
 		77C784C0273B522700120F48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C784BF273B522700120F48 /* SettingsView.swift */; };
 		7BE3B8BB3F44FCEE2F7328BF /* Pods_Car_Pool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D82DE901A63C29C54678E9D /* Pods_Car_Pool.framework */; };
 		BDC9A8A07F351732FFC96D21 /* Pods_Car_PoolTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB893E37A0D1A4DC0D2E149C /* Pods_Car_PoolTests.framework */; };
@@ -104,7 +102,6 @@
 		27D9F8E3274B4FDC00313977 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		27D9F8E4274B4FDC00313977 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		27D9F8E5274B4FDC00313977 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		27D9F8E7274B4FDC00313977 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		27D9F8E8274B4FDC00313977 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		27D9F8E9274B4FDC00313977 /* PickScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickScreen.swift; sourceTree = "<group>"; };
 		27D9F8EA274B4FDC00313977 /* BookedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookedView.swift; sourceTree = "<group>"; };
@@ -123,7 +120,6 @@
 		77580999275EF33400735CE6 /* AnimatedBlobView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBlobView.swift.swift; sourceTree = "<group>"; };
 		7758099B275EF41600735CE6 /* UserProfileViewV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewV2.swift; sourceTree = "<group>"; };
 		77C784B9273B519C00120F48 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		77C784BD273B522200120F48 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		77C784BF273B522700120F48 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7D82DE901A63C29C54678E9D /* Pods_Car_Pool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Pool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABAEAA97C932F5C9FAFA6E6A /* Pods_Car_Pool_Car_PoolUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Car_Pool_Car_PoolUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,11 +190,9 @@
 				27689720274DE2E8005D1619 /* AuthView.swift */,
 				27681C562750C5C900D3AE94 /* Toggle.swift */,
 				27689722274DE5C2005D1619 /* ContentView.swift */,
-				27D9F8E7274B4FDC00313977 /* TabBarView.swift */,
 				27689726274F17CE005D1619 /* DetailView.swift */,
 				77C784B9273B519C00120F48 /* SignInView.swift */,
 				77C784BF273B522700120F48 /* SettingsView.swift */,
-				77C784BD273B522200120F48 /* ChatView.swift */,
 				77580999275EF33400735CE6 /* AnimatedBlobView.swift.swift */,
 				7758099B275EF41600735CE6 /* UserProfileViewV2.swift */,
 				27D9F8E2274B4FDC00313977 /* SwiftUI */,
@@ -569,7 +563,6 @@
 				27D9F8DC274B4FCD00313977 /* Car_PoolApp.swift in Sources */,
 				77C784C0273B522700120F48 /* SettingsView.swift in Sources */,
 				27D9F8EE274B4FDC00313977 /* MapView.swift in Sources */,
-				77C784BE273B522200120F48 /* ChatView.swift in Sources */,
 				27681C572750C5C900D3AE94 /* Toggle.swift in Sources */,
 				27ADCB8A274D625F00A383F9 /* UserProfileView.swift in Sources */,
 				2D584E28275EE68000367C3E /* ChatList.swift in Sources */,
@@ -593,7 +586,6 @@
 				27F66439274C43A0001A860D /* backup.swift in Sources */,
 				272D12E32750A13A0003A0DE /* TabBar.swift in Sources */,
 				2768971D274DD8B5005D1619 /* FirebaseManager.swift in Sources */,
-				27D9F8F0274B4FDC00313977 /* TabBarView.swift in Sources */,
 				2D584E22275EE60A00367C3E /* ChatroomModel.swift in Sources */,
 				275BB0D42754016E00859203 /* Point.swift in Sources */,
 				27689725274EBA8B005D1619 /* User.swift in Sources */,
