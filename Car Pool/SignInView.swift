@@ -1,3 +1,4 @@
+
 import SwiftUI
 import Firebase
 
@@ -7,13 +8,13 @@ struct SignInView: View {
     @State var email = ""
     @State var password = ""
     @State var shouldShowImagePicker = false
-    @State var signInStatusMessage = ""
+//    @State var signInStatusMessage = ""
     @State var pushActive = false
     @StateObject var user = User()
     @State var display = true;
     
     @State var auth = false
-        
+    
     var body: some View {
         
         NavigationView {
@@ -76,17 +77,23 @@ struct SignInView: View {
                                             .background(Circle()
                                                             .fill(gradient)
                                                             .frame(width: 140, height: 140, alignment: .center)
+                                                        
+                                                        //.overlay(Circle() .fill(Color.orange))
                                                         // Black if light mode, white if dark mode
                                                             .foregroundColor(Color(.label))
                                                         
                                             )
                                             .padding(.bottom, 23)
                                     }
+                                    
                                     Text("Choose your profile picture")
                                         .foregroundColor(Color.gray)
+                                    
                                 }
                             })
                         }
+                        
+                        
                         
                         // Email and password
                         VStack(alignment: .leading, spacing: 8, content: {
@@ -155,6 +162,59 @@ struct SignInView: View {
                             .padding(.top, 10)
                         
                         
+                        
+                        //                    Group {
+                        //                        // UF email address
+                        //                        TextField("Email", text: $email)
+                        //                            // Comes with convenient @ symbol
+                        //                            .keyboardType(.emailAddress)
+                        //                            // Eww auto correct,
+                        //                            .autocapitalization(.none)
+                        //                            .disableAutocorrection(true)
+                        //
+                        //                        SecureField("Password", text:    $password)
+                        //                    }
+                        //                    .padding(12)
+                        //                    .background(Color.white)
+                        //                    .cornerRadius(10)
+                        //                    .foregroundColor(Color(.black))
+                        
+                        // Sign in / Sign up button
+                        //                    Button(action: {
+                        //                       handleAction()
+                        //                    }, label: {
+                        //                        HStack {
+                        //                            Spacer()
+                        //                            Text(isSignedIn ? "Sign in" : "Sign up")
+                        //                                .foregroundColor(Color.white)
+                        //                                .padding(.vertical, 10)
+                        //                                .font(.system(size: 18, weight: .semibold))
+                        //                            Spacer()
+                        //                        }.background(Color.blue)
+                        //                            .cornerRadius(50)
+                        //                    })
+                        //
+                        //                    // Password reset button
+                        //                    if isSignedIn {
+                        //                        Button(action: {
+                        //                           sendResetPasswordEmail()
+                        //                        }, label: {
+                        //                            HStack {
+                        //                                Spacer()
+                        //                                Text("Reset password")
+                        //                                    .foregroundColor(Color.white)
+                        //                                    .padding(.vertical, 10)
+                        //                                    .font(.system(size: 18, weight: .semibold))
+                        //                                Spacer()
+                        //                            }.background(Color.blue)
+                        //                                .cornerRadius(50)
+                        //                        })
+                        //                    }
+                        
+                        
+//                        Text(self.signInStatusMessage)
+//                            .foregroundColor(.orange)
+//                            .font(.system(size: 18))
                         if auth == true {
                             NavigationLink(destination:
                                             FloatingTabBar().environmentObject(user),
@@ -165,6 +225,7 @@ struct SignInView: View {
                         }
                     }
                     .padding()
+                    
                 }
                 .padding()
                 .frame(maxHeight: .infinity, alignment: .top)
@@ -172,7 +233,6 @@ struct SignInView: View {
                 .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
                     ImagePicker(image: $image)
                 }
-                // FIXME: not signing in
                 .overlay(
                     HStack {
                         Text(!isSignedIn ? "Already have an account? Tap" : "New user? Tap")
@@ -188,10 +248,12 @@ struct SignInView: View {
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
+            
         }
     }
-        
-        
+    
+    
+    
     @State var image: UIImage?
     
     // Function that handles the sign in / create new account
@@ -209,52 +271,60 @@ struct SignInView: View {
             result, err in
             if let err = err {
                 print("Failed to sign in user: ", err)
-                self.signInStatusMessage = "Failed to sign in user: \(err)"
+//                self.signInStatusMessage = "Failed to sign in user: \(err)"
                 return
             }
             
             // getdata
+            
+            
             self.pushActive = true
             
             print("Successfully signed in as user: \(result?.user.uid ?? "")")
             
-            self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
+//            self.signInStatusMessage = "Successfully signed in as user: \(result?.user.uid ?? "")"
             
             auth = true;
             let db = Firestore.firestore()
-
-
+            
+            
             db.collection("shares").getDocuments() { snapshot, error in
                 if error == nil {
                     if let snapshot = snapshot {
                         for doc in snapshot.documents{
+                            
+                            
                             if doc.data()["uid"] as? String == result?.user.uid {
                                 user.email = doc.data()["email"] as! String
+                                
                             }
+                            
                         }
                         print("good")
                     }
                 }
                 else {
+                    
                 }
             }
+            
         }
     }
-        
+    
     // Function for signing up
     private func signUpUser() {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) {
             result, err in
-
+            
             if let err = err {
                 print("Failed to create user: ", err)
-                self.signInStatusMessage = "Failed to create user: \(err)"
+//                self.signInStatusMessage = "Failed to create user: \(err)"
                 return
             }
             
             print("Successfully created user: \(result?.user.uid ?? "")")
             
-            self.signInStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
+//            self.signInStatusMessage = "Successfully created user: \(result?.user.uid ?? "")"
             
             self.storeImage()
         }
@@ -266,17 +336,18 @@ struct SignInView: View {
         guard let imageData = self.image?.jpegData(compressionQuality: 0.5) else { return }
         ref.putData(imageData, metadata: nil) { metadata, err in
             if let err = err {
-                self.signInStatusMessage = "Failed to store image: \(err)"
+//                self.signInStatusMessage = "Failed to store image: \(err)"
                 return
             }
             
             ref.downloadURL { url, err in
                 if let err = err {
-                    self.signInStatusMessage = "Failed to retrieve downloadURL: \(err)"
+//                    self.signInStatusMessage = "Failed to retrieve downloadURL: \(err)"
                     return
                 }
                 
-                self.signInStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
+                
+//                self.signInStatusMessage = "Successfully stored image with url: \(url?.absoluteString ?? "")"
                 print(url?.absoluteString)
                 
                 // Optional binding
@@ -293,9 +364,10 @@ struct SignInView: View {
             .document(uid).setData(userData) { err in
                 if let err = err {
                     print(err)
-                    self.signInStatusMessage = "\(err)"
+//                    self.signInStatusMessage = "\(err)"
                     return
                 }
+                
                 print("Success")
             }
     }
@@ -304,11 +376,11 @@ struct SignInView: View {
         FirebaseManager.shared.auth.sendPasswordReset(withEmail: email) { err in
             if let err = err {
                 print(err)
-                self.signInStatusMessage = "Invalid email"
+//                self.signInStatusMessage = "Invalid email"
                 return
             } else {
                 print("Success")
-                self.signInStatusMessage = ("Password reset email sent!")
+//                self.signInStatusMessage = ("Password reset email sent!")
             }
         }
     }

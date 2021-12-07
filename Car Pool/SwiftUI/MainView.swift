@@ -366,7 +366,8 @@ struct MainView: View {
                             
                             VStack(alignment: .leading, spacing: 12){
                                 
-                                Text("User")
+                                // Hardcoded for presentation's sake
+                                Text("Kanye West")
                                     .font(.title)
                                     .foregroundColor(Color.black.opacity(0.8))
                                 
