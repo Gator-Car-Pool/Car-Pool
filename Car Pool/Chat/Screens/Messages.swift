@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct Messages: View {
-    
     let chatroom: Chatroom
     @ObservedObject var viewModel = MessageModel()
     @State var messageField = ""

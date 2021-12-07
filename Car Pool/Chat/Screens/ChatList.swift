@@ -28,14 +28,6 @@ struct ChatList: View {
                 viewModel.fetchData()                
             }
             .navigationTitle("Messages")
-            .navigationBarItems(trailing: Button(action: {
-                self.joinModal = true
-            }, label: {
-                Image(systemName: "plus.circle")
-            }))
-            .sheet(isPresented: $joinModal, content:{
-                join(isOpen: $joinModal)
-            })
         }
     }
 }
