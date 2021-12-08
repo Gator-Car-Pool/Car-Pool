@@ -94,7 +94,7 @@ struct MainView: View {
             }
         }
     }
-    
+        
     func postUpdate(curr: Point, action: String) {
 
     }
@@ -107,7 +107,7 @@ struct MainView: View {
     var body: some View {
         
         NavigationView {
-            
+                        
             ZStack {
                 
                 VStack {
@@ -509,6 +509,10 @@ struct MainView: View {
                                 }
                             }
                             
+                            
+                            Text("Destination: \(current.name) \nCreated: \(current.time_created)")
+                                .font(.footnote)
+                            
                             Button(action: {
                                 var currentEmail = ""
                                 let user = Auth.auth().currentUser
@@ -524,39 +528,26 @@ struct MainView: View {
                                 self.showDetails.toggle()
                                 
                                 viewModel.createNewChatroom(reciever: current.id, title: usersArray, handler: viewModel.fetchData)
-                            }) {
-                                Text("Create chat...")
-                                    .font(.caption).foregroundColor(Color.blue)
-                            }
-                            
-                            Text("Destination: \(current.name) \nCreated: \(current.time_created)")
-                                .font(.footnote)
-                            
-                            Button(action: {
-                                
-                                if current.isUser  {
-                                    postUpdate(curr: current, action: "add")
-                                }
-                                else{
-                                    let currentUser = Auth.auth().currentUser
-                                    db.collection("shares").whereField("email", isEqualTo: currentUser?.email).whereField("time_created", isEqualTo: current.time_created).getDocuments() { (querySnapshot, err) in
-                                      if let err = err {
-                                        print("Error getting documents: \(err)")
-                                      } else {
-                                        for document in querySnapshot!.documents {
-                                          document.reference.delete()
-                                        }
-                                      }
-                                    }
-                                    
-                                }
-                                
-                                self.showDetails.toggle()
-                                
+//                                if current.isUser  {
+//                                    postUpdate(curr: current, action: "add")
+//                                }
+//                                else{
+//                                    let currentUser = Auth.auth().currentUser
+//                                    db.collection("shares").whereField("email", isEqualTo: currentUser?.email).whereField("time_created", isEqualTo: current.time_created).getDocuments() { (querySnapshot, err) in
+//                                      if let err = err {
+//                                        print("Error getting documents: \(err)")
+//                                      } else {
+//                                        for document in querySnapshot!.documents {
+//                                          document.reference.delete()
+//                                        }
+//                                      }
+//                                    }
+//
+//                                }
                                 
                             }) {
                                 if current.isUser  {
-                                    Text("Send Request")
+                                    Text("Send Message")
                                         
                                         .foregroundColor(.white)
                                         .padding(.vertical, 10)
