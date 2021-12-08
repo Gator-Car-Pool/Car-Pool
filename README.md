@@ -214,5 +214,5 @@ Just a prototype :)
 
 
 ### Video Walkthrough
-https://www.youtube.com/watch?v=B2Rmb04S0yc
+https://www.youtube.com/watch?v=0Z2-FLpaZPo&feature=youtu.be
          
