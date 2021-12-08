@@ -1,9 +1,5 @@
 //
 //  ContentView.swift
-//  Neuromorphic Profile
-//
-//  Created by Kavsoft on 05/06/20.
-//  Copyright © 2020 Kavsoft. All rights reserved.
 //
 
 import SwiftUI

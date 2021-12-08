@@ -1,7 +1,6 @@
 import SwiftUI
 import Firebase
 
-
 // By default, user will be on sign up page
 struct SignInView: View {
     @State var isSignedIn = false
