@@ -240,7 +240,6 @@ struct MainView: View {
                                     .font(.title)
                                     .foregroundColor(Color.black.opacity(0.8))
                                 
-                                
 //                                Text(            FirebaseManager.shared.auth.currentUser?.email ?? "")
 //                                    .foregroundColor(Color.black.opacity(0.7))
                             }
@@ -676,6 +675,7 @@ struct MainView: View {
                         }
                     }
                 }
+                //TO BE CONTINUED: new features coming soon!
                 
 //                Button(action: {
 //                    print("See Driver list")
