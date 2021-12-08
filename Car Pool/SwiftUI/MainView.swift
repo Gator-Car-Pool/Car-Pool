@@ -677,49 +677,49 @@ struct MainView: View {
                     }
                 }
                 
-                Button(action: {
-                    print("See Driver list")
-                    self.showRides.toggle();
-                    self.isVisible.toggle()
-                    display.toggle()
-                    
-                }) {
-                    
-                    HStack{
-                        Image("car")
-                            .resizable()
-                            .frame(width: 20, height:20)
-                        
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(40)
-                    .frame(height: isVisible ? nil : 0)
-                    .disabled(!isVisible)
-                    
-                }
-                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.1)
+//                Button(action: {
+//                    print("See Driver list")
+//                    self.showRides.toggle();
+//                    self.isVisible.toggle()
+//                    display.toggle()
+//
+//                }) {
+//
+//                    HStack{
+//                        Image("car")
+//                            .resizable()
+//                            .frame(width: 20, height:20)
+//
+//                    }
+//                    .padding()
+//                    .background(Color.white)
+//                    .cornerRadius(40)
+//                    .frame(height: isVisible ? nil : 0)
+//                    .disabled(!isVisible)
+//
+//                }
+//                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.1)
                 
-                Button(action: {
-                    print("go to user profile")
-                    self.showUserProfile = true;
-                    self.isVisible.toggle()
-                    display.toggle()
-                }) {
-                    
-                    HStack{
-                        Image("user")
-                            .resizable()
-                            .frame(width: 20, height:20)
-                    }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(40)
-                    .frame(height: isVisible ? nil : 0)
-                    .disabled(!isVisible)
-                }
-                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.2)
-                
+//                Button(action: {
+//                    print("go to user profile")
+//                    self.showUserProfile = true;
+//                    self.isVisible.toggle()
+//                    display.toggle()
+//                }) {
+//
+//                    HStack{
+//                        Image("user")
+//                            .resizable()
+//                            .frame(width: 20, height:20)
+//                    }
+//                    .padding()
+//                    .background(Color.white)
+//                    .cornerRadius(40)
+//                    .frame(height: isVisible ? nil : 0)
+//                    .disabled(!isVisible)
+//                }
+//                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.2)
+//
                 Button(action: {
                     
                     self.fetchData()
@@ -737,7 +737,7 @@ struct MainView: View {
                     .frame(height: isVisible ? nil : 0)
                     .disabled(!isVisible)
                 }
-                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.3)
+                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.2)
                 
                 Button(action: {
                     print("Pick location")
@@ -776,7 +776,7 @@ struct MainView: View {
                     }
                     .cornerRadius(40)
                 }
-                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.4)
+                .position(x: UIScreen.main.bounds.size.width*0.9, y: UIScreen.main.bounds.size.height*0.1)
                 
                 Button(action: {
                     print("Pick location")

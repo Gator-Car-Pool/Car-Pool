@@ -189,6 +189,7 @@ struct SignInView: View {
             signInUser()
         } else {
             signUpUser()
+            signInUser()
         }
     }
     
