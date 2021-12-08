@@ -514,37 +514,34 @@ struct MainView: View {
                                 .font(.footnote)
                             
                             Button(action: {
-                                var currentEmail = ""
-                                let user = Auth.auth().currentUser
-                                if let user = user {
-                                    currentEmail = user.email!
+                                if(current.isUser){
+                                    var currentEmail = ""
+                                    let user = Auth.auth().currentUser
+                                    if let user = user {
+                                        currentEmail = user.email!
+                                    }
+                                    let clickedEmail = current.email
+                                    let usersArray = [currentEmail, clickedEmail]
+                                    
+                                    print(clickedEmail)
+                                    print(currentEmail)
+                                                                        
+                                    viewModel.createNewChatroom(reciever: current.id, title: usersArray, handler: viewModel.fetchData)
                                 }
-                                let clickedEmail = current.email
-                                let usersArray = [currentEmail, clickedEmail]
-                                
-                                print(clickedEmail)
-                                print(currentEmail)
-                                
+                                else{
+                                    let currentUser = Auth.auth().currentUser
+                                    db.collection("shares").whereField("email", isEqualTo: currentUser?.email).whereField("time_created", isEqualTo: current.time_created).getDocuments() { (querySnapshot, err) in
+                                      if let err = err {
+                                        print("Error getting documents: \(err)")
+                                      } else {
+                                        for document in querySnapshot!.documents {
+                                          document.reference.delete()
+                                        }
+                                      }
+                                    }
+                                }
                                 self.showDetails.toggle()
-                                
-                                viewModel.createNewChatroom(reciever: current.id, title: usersArray, handler: viewModel.fetchData)
-//                                if current.isUser  {
-//                                    postUpdate(curr: current, action: "add")
-//                                }
-//                                else{
-//                                    let currentUser = Auth.auth().currentUser
-//                                    db.collection("shares").whereField("email", isEqualTo: currentUser?.email).whereField("time_created", isEqualTo: current.time_created).getDocuments() { (querySnapshot, err) in
-//                                      if let err = err {
-//                                        print("Error getting documents: \(err)")
-//                                      } else {
-//                                        for document in querySnapshot!.documents {
-//                                          document.reference.delete()
-//                                        }
-//                                      }
-//                                    }
-//
-//                                }
-                                
+
                             }) {
                                 if current.isUser  {
                                     Text("Send Message")
