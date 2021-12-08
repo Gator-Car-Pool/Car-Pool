@@ -152,9 +152,11 @@ struct SignInView: View {
                                            isActive: self.$pushActive) {
                                 Loader()
                             }.hidden()
+
                         }
                     }
                     .padding()
+                    .navigationBarHidden(true)
                 }
                 .padding()
                 .frame(maxHeight: .infinity, alignment: .top)

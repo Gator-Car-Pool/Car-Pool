@@ -26,6 +26,8 @@ struct MainView: View {
     @Binding var display : Bool;
     @StateObject var user = User();
     @ObservedObject var viewModel = ChatroomModel()
+    private let db = Firestore.firestore()
+
     
     init( display: Binding<Bool> ) {
         self._display = display
@@ -238,13 +240,13 @@ struct MainView: View {
                             VStack(alignment: .leading, spacing: 12){
                                 
                                 // Hardcoded for presentation's sake
-                                Text("Kanye West")
+                                Text(FirebaseManager.shared.auth.currentUser?.email ?? "")
                                     .font(.title)
                                     .foregroundColor(Color.black.opacity(0.8))
                                 
                                 
-                                Text(            FirebaseManager.shared.auth.currentUser?.email ?? "")
-                                    .foregroundColor(Color.black.opacity(0.7))
+//                                Text(            FirebaseManager.shared.auth.currentUser?.email ?? "")
+//                                    .foregroundColor(Color.black.opacity(0.7))
                             }
                             .padding(.leading, 20)
                             
@@ -324,6 +326,7 @@ struct MainView: View {
                                         
                                 Text("Back")
                                     .font(.title)
+                                    .foregroundColor(Color.black)
                                     }
                                 }
                            
@@ -384,7 +387,7 @@ struct MainView: View {
                             HStack(spacing: 5){
                                 
                                 Button(action: {
-                                    self.showRides.toggle();
+                                    self.showRides.toggle()
                                     self.isVisible.toggle()
                                     display.toggle()
                                     
@@ -402,7 +405,6 @@ struct MainView: View {
                                 
                                 Button(action: {
                                     fetchData()
-                                    
                                 }) {
                                     
                                     Text("refresh")
@@ -493,8 +495,8 @@ struct MainView: View {
                                         Circle().stroke(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.blue]), startPoint: /*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/, endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/),lineWidth: 3))
                                 
                                 if current.isUser  {
-                                    Text("User")
-                                        .font(.system(size: 24, weight: .bold, design: .rounded))
+                                    Text(current.email)
+                                        .font(.system(size: 20, weight: .bold, design: .rounded))
                                     
                                     Button(action: {
                                         self.showUserProfile.toggle();
@@ -508,7 +510,7 @@ struct MainView: View {
                                     }
                                 } else {
                                     Text("Your ride")
-                                        .font(.system(size: 24, weight: .bold, design: .rounded))
+                                        .font(.system(size: 20, weight: .bold, design: .rounded))
                                 }
                             }
                             
@@ -524,10 +526,12 @@ struct MainView: View {
                                 print(clickedEmail)
                                 print(currentEmail)
                                 
+                                self.showDetails.toggle()
+                                
                                 viewModel.createNewChatroom(reciever: current.id, title: usersArray, handler: viewModel.fetchData)
                             }) {
-                                Text(current.email)
-                                    .font(.caption)
+                                Text("Create chat...")
+                                    .font(.caption).foregroundColor(Color.blue)
                             }
                             
                             Text("Destination: \(current.name) \nCreated: \(current.time_created)")
@@ -537,6 +541,19 @@ struct MainView: View {
                                 
                                 if current.isUser  {
                                     postUpdate(curr: current, action: "add")
+                                }
+                                else{
+                                    let currentUser = Auth.auth().currentUser
+                                    db.collection("shares").whereField("email", isEqualTo: currentUser?.email).whereField("time_created", isEqualTo: current.time_created).getDocuments() { (querySnapshot, err) in
+                                      if let err = err {
+                                        print("Error getting documents: \(err)")
+                                      } else {
+                                        for document in querySnapshot!.documents {
+                                          document.reference.delete()
+                                        }
+                                      }
+                                    }
+                                    
                                 }
                                 
                                 self.showDetails.toggle()

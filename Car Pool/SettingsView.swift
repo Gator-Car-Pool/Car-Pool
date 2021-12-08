@@ -54,7 +54,8 @@ struct SettingsView: View {
                     // Sign out
                     signOutUser()
                     // Go back to SignInView()
-                    presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
+                    //presentationMode.wrappedValue.popToRootViewController(animated: false)
                 }
                 
                 Section {

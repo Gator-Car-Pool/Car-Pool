@@ -50,15 +50,21 @@ struct FloatingTabBar: View {
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("map")
                     .environmentObject(showBar)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarHidden(true)
                 
                 ChatList()
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("message")
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarHidden(true)
                 
                 SettingsView(darkModeEnabled: $darkModeEnabled,
                              systemThemeEnabled: $systemThemeEnabled)
                     .ignoresSafeArea(.all, edges: .all)
                     .tag("settings")
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarHidden(true)
       
             }    .onAppear {
                 SystemThemeManager
