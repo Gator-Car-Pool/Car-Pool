@@ -212,5 +212,7 @@ Just a prototype :)
 
 <img src='https://github.com/Gator-Car-Pool/Car-Pool/blob/master/Milestone.gif?raw=true' title='Video Walkthrough' width='320px' alt='Video Walkthrough' />
 
+
+### Video Walkthrough
 https://www.youtube.com/watch?v=B2Rmb04S0yc
          
