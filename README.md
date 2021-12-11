@@ -209,18 +209,8 @@ Just a prototype :)
         
 
 ### Milestone gif
+<iframe width="820" height="462" src="https://www.youtube.com/embed/0Z2-FLpaZPo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<img src='https://github.com/Gator-Car-Pool/Car-Pool/blob/master/Milestone.gif?raw=true' title='Video Walkthrough' width='320px' alt='Video Walkthrough' />
-
-<iframe
-    width="640"
-    height="480"
-    src="https://www.youtube.com/embed/UmX4kyB2wfg"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
->
-</iframe>
 ### Video Walkthrough
 https://www.youtube.com/watch?v=0Z2-FLpaZPo&feature=youtu.be
          
