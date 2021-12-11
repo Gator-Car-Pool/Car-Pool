@@ -209,7 +209,8 @@ Just a prototype :)
         
 
 ### Milestone gif
-<iframe width="820" height="462" src="https://www.youtube.com/embed/0Z2-FLpaZPo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<img src='https://media.giphy.com/media/gS6vi94l5cpvsh7oE1/giphy.gif' title='Video Walkthrough' width='320px' alt='Video Walkthrough' />
+
 
 ### Video Walkthrough
 https://www.youtube.com/watch?v=0Z2-FLpaZPo&feature=youtu.be
